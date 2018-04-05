@@ -1,0 +1,7 @@
+<IfModule mod_rewrite.c>
+	RewriteEngine on
+
+	RewriteCond %{REQUEST_URI} !^/Application/Content/
+	RewriteRule ^([^?]*)$ Index.php [NC,L,QSA]
+
+</IfModule>

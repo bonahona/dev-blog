@@ -1,0 +1,25 @@
+{
+  "Routes": [
+    {
+      "/admin/{...}": {
+        "Controller": "User",
+        "Action": "Login",
+        "Variables": {
+        }
+      }
+    },
+    {
+      "/{Controller}/{Action}/{...}": {
+        "Controller": "{Controller}",
+        "Action": "{Action}",
+        "Variables": "{...}"
+      }
+    }
+  ],
+  "Default": {
+    "Controller": "Home",
+    "Action": "Index",
+    "Variables": {
+    }
+  }
+}

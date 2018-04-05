@@ -1,0 +1,12 @@
+{
+    "About": {
+        "Assembly": "ShellMvc",
+        "Version": {
+            "Major": 0,
+            "Minor": 1,
+            "Revision": 0
+        },
+        "Released": "2016-02-04",
+        "Author": "Björn Fyrvall"
+    }
+}

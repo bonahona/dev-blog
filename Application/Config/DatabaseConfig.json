@@ -1,0 +1,11 @@
+{
+  "Database": {
+    "UseDatabase": true,
+    "DatabaseType" : "PDO",
+    "Provider" : "mysql",
+    "Server" : "dev-blog-mysql",
+    "Database" : "dev-blog",
+    "Username" : "root",
+    "Password" : "H3mligt"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "Application": {
+    "DefaultLayout": "Default",
+    "NotFoundController" : "Home",
+    "NotFoundAction": "NotFound",
+    "CapitalizeControllerName": true,
+    "CapitalizeActionName": true
+  },
+  "Debug":{
+    "DieOnRoutingError": true,
+    "DontCacheModels": false
+  },
+  "Logging": {
+    "FileDirectory": "/logs/",
+    "Loggers": [
+      {
+        "CacheLogger": {
+          "Name": "Cache"
+        }
+      }
+    ]
+  },
+  "Caching":{
+
+  }
+}

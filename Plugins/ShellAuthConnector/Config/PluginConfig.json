@@ -1,0 +1,15 @@
+{
+    "Plugin":
+    {
+    },
+    "ShellApplication": {
+        "Name": "Documentation",
+        "LocalId": "4",
+        "PublicKey": "-"
+    },
+    "ShellAuthServer": {
+        "Server": "auth-site",
+        "Port" : "80",
+        "MethodPath": "/api"
+    }
+}
