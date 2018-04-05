@@ -16,6 +16,32 @@ class DbCreation implements IDatabaseMigration
         $migrator->CreateTable('localuser')
             ->AddPrimaryKey('Id', 'int')
             ->AddColumn('ShellUserId', 'int');
+
+        $migrator->CreateTable('categoryttag')
+            ->AddPrimaryKey('Id', 'int')
+            ->AddColumn('DisplayName', 'varchar(128)')
+            ->AddColumn('IsActive', 'int(1)', array('not null', 'default 0'));
+
+        $migrator->CreateTable('post')
+            ->AddPrimaryKey('Id', 'int')
+            ->AddColumn('Title', 'varchar(512)')
+            ->AddColumn('NavigationTitle', 'varchar(512)')
+            ->AddColumn('PublishDate', 'varchar(512)')
+            ->AddColumn('MastHeadImageUrl', 'varchar(1024)')
+            ->AddColumn('Status', 'int')
+            ->AddReference('localuser', 'Id', array('not null'), 'PublishedById');
+
+        $migrator->CreateTable('postcategorytag')
+            ->AddPrimaryKey('Id', 'int')
+            ->AddReference('category', 'Id', array('not null'), 'CategoryId')
+            ->AddReference('post', 'Id', array('not null'), 'PostId');
+
+        $migrator->CreateTable('postcontent')
+            ->AddPrimaryKey('Id', 'int')
+            ->AddColumn('SortOrder', 'int', array('not null', 'default 0'))
+            ->AddColumn('IsActive', 'int(1)', array('not null', 'default 0'))
+            ->AddColumn('Content', 'text')
+            ->AddReference('post', 'Id', array('not null'), 'PostId');
     }
 
     public function Down($migrator)
