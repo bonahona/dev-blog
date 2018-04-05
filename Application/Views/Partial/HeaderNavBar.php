@@ -24,7 +24,7 @@
         <form method="get" action="/Projects/Search" class="navbar-form navbar-right">
             <div class="input-group">
                 <div class="input-group-addon">
-                    <span class="glyphicon glyphicon-search"></span>
+                    <span class="fas fa-search">Go</span>
                 </div>
                 <?php if(isset($SearchQuery)):?>
                     <input type="text" name="keywords" class="form-control" placeholder="Search..."/ value="<?php echo $SearchQuery;?>">

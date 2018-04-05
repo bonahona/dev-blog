@@ -28,6 +28,7 @@ class DbCreation implements IDatabaseMigration
             ->AddColumn('NavigationTitle', 'varchar(512)')
             ->AddColumn('PublishDate', 'varchar(512)')
             ->AddColumn('MastHeadImageUrl', 'varchar(1024)')
+            ->AddColumn('HomePageText', 'varchar(4096)')
             ->AddColumn('Status', 'int')
             ->AddReference('localuser', 'Id', array('not null'), 'PublishedById');
 

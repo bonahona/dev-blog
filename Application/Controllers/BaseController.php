@@ -13,7 +13,8 @@ class BaseController extends Controller
     {
         $this->EnqueueCssFiles([
             'bootstrap-darkly.min.css',
-            'dashboard.css'
+            'dashboard.css',
+            'font-awesome.css'
         ]);
     }
 
