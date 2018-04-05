@@ -4,6 +4,8 @@ class BaseController extends Controller
     public function BeforeAction()
     {
         $this->EnqueuBasicCss();
+        $this->EnqueuBasicJavascript();
+
         $this->SetLinks();
     }
 
