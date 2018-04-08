@@ -36,7 +36,38 @@
 }
 
 .note-editable{
-    height: 400px;    
+    height: 400px;
+}
+
+.form-group-row,
+.row-no-margin{
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.ms-0{
+    margin-left: 0em;
+    margin-right: 0em;
+}
+
+.ms-1{
+    margin-left: 0.25em;
+    margin-right: 0.25em;
+}
+
+.ms-2{
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+}
+
+.ms-3{
+    margin-left: 0.75em;
+    margin-right: 0.75em;
+}
+
+.ms-4{
+    margin-left: 1em;
+    margin-right: 1em;
 }
 
 /* Hide for mobile, show later */

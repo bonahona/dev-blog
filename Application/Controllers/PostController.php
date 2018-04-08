@@ -40,6 +40,7 @@ class PostController extends AdminController
 
         $this->Set('Post', $post);
         $this->Set('PostStatuses', $this->Models->PostStatus->All());
+        $this->Set('Tags', $this->Models->Tag->All());
 
         return $this->View();
     }

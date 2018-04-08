@@ -39,6 +39,19 @@
                                 <label>Status</label>
                                 <?php echo $this->Form->Select('PostStatusId', $PostStatuses, array('key' => 'Id', 'value' => 'DisplayName', 'attributes' => array('class' => 'form-control')));?>
                             </div>
+
+                            <h5>Tags</h5>
+                            <div class="row ms-0 my-2">
+                                <div class="btn btn-primary btn-md ms-2">Programming <span class="fa fa-times-circle-o"></span></div>
+                                <div class="btn btn-primary btn-md ms-2">Design <span class="fa fa-times-circle-o"></span></div>
+                                <div class="btn btn-primary btn-md ms-2">Editor <span class="fa fa-times-circle-o"></span></div>
+                                <div class="btn btn-primary btn-md ms-2">Textures <span class="fa fa-times-circle-o"></span></div>
+                            </div>
+
+                            <div class="form-group row ms-0">
+                                <?php echo $this->Form->Select('TagId', $Tags, array('key' => 'Id', 'value' => 'DisplayName', 'attributes' => array('class' => 'form-control col-lg-4')));?>
+                                <a data-target="/post/addtag" class="btn btn-success col-lg-2" id="addTag">Add</a>
+                            </div>
                             <?php echo $this->Form->Submit('Save', array('attributes' => array('class' => 'btn btn-md btn-success')));?>
                             <?php echo $this->Form->End();?>
                         </div>
