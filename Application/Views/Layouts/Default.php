@@ -29,7 +29,7 @@
             </div>
             <div class="col-md-4">
                 <div class="row">
-                    <?php echo $this->PartialView('TagWidget');?>
+                    <?php echo $this->PartialView('TagWidget', ['DisplayTags' => $DisplayTags]);?>
                 </div>
                 <div class="row">
                     <?php if($this->IsLoggedIn()):?>

@@ -14,6 +14,11 @@
                         <a href="/tag">Manage tags</a>
                     </li>
                 </ul>
+                <ul class="list-unstyled mb-0">
+                    <li class="mt-2">
+                        <a href="/user/logout">Logout</a>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>

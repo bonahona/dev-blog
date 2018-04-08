@@ -7,6 +7,7 @@ class BaseController extends Controller
         $this->EnqueuBasicJavascript();
 
         $this->SetLinks();
+        $this->SetTags();
     }
 
     protected  function EnqueuBasicCss()
@@ -34,5 +35,29 @@ class BaseController extends Controller
     protected function SetLinks()
     {
         $this->Set('ApplicationLinks', $this->Helpers->ShellAuth->GetApplicationLinks()['data']);
+    }
+
+    protected function SetTags()
+    {
+        $result = array(
+            'left' => array(),
+            'right' => array()
+        );
+
+
+        $tags = $this->Models->Tag->Where(['IsActive' => 1])->OrderBy('DisplayName');
+
+        $count = 0;
+        foreach($tags as $tag){
+            if($count % 2 == 0){
+                $result['left'][] = $tag;
+            }else{
+                $result['right'][] = $tag;
+            }
+
+            $count++;
+        }
+
+        $this->Set('DisplayTags', $result);
     }
 }

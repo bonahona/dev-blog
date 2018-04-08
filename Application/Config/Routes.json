@@ -9,6 +9,14 @@
       }
     },
     {
+      "/search/{...}": {
+        "Controller": "Home",
+        "Action": "Search",
+        "Variables": {
+        }
+      }
+    },
+    {
       "/{Controller}/{Action}/{...}": {
         "Controller": "{Controller}",
         "Action": "{Action}",

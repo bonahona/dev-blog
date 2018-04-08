@@ -16,6 +16,11 @@ class HomeController extends BaseController
         return $this->View();
     }
 
+    public function Search()
+    {
+        return $this->View();
+    }
+
     public function NotFound()
     {
         return $this->View();

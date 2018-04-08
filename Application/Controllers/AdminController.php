@@ -7,5 +7,7 @@ class AdminController extends BaseController
         if(!$this->IsLoggedIn()){
             return $this->Redirect('/admin', ['ref' => $this->RequestUri]);
         }
+
+        parent::BeforeAction();
     }
 }
