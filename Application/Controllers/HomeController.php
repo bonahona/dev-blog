@@ -4,8 +4,6 @@ class HomeController extends BaseController
 {
     public function Index()
     {
-        $this->Layout = "Home";
-
         $this->Title = "Test";
 
         return $this->View();
@@ -13,8 +11,6 @@ class HomeController extends BaseController
 
     public function Post()
     {
-        $this->Layout = "Post";
-
         $this->Title = "Test";
 
         return $this->View();

@@ -21,17 +21,14 @@
             <span class="navbar-brand light-grey">|</span>
             <a class="navbar-brand light-grey" href="http://fyrvall.com">Fyrvall.com</a>
         </div>
+
         <form method="get" action="/Projects/Search" class="navbar-form navbar-right">
-            <div class="input-group">
-                <div class="input-group-addon">
-                    <span class="fas fa-search">Go</span>
-                </div>
-                <?php if(isset($SearchQuery)):?>
-                    <input type="text" name="keywords" class="form-control" placeholder="Search..."/ value="<?php echo $SearchQuery;?>">
-                <?php else:?>
-                    <input type="text" name="keywords" class="form-control" placeholder="Search..."/>
-                <?php endif;?>
-            </div>
+            <?php if(isset($SearchQuery)):?>
+                <input type="text" name="keywords" class="form-control" placeholder="Search..."/ value="<?php echo $SearchQuery;?>">
+            <?php else:?>
+                <input type="text" name="keywords" class="form-control" placeholder="Search..."/>
+            <?php endif;?>
         </form>
+
     </div>
 </nav>

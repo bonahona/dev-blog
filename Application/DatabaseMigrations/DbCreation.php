@@ -17,7 +17,7 @@ class DbCreation implements IDatabaseMigration
             ->AddPrimaryKey('Id', 'int')
             ->AddColumn('ShellUserId', 'int');
 
-        $migrator->CreateTable('categoryttag')
+        $migrator->CreateTable('tag')
             ->AddPrimaryKey('Id', 'int')
             ->AddColumn('DisplayName', 'varchar(128)')
             ->AddColumn('IsActive', 'int(1)', array('not null', 'default 0'));
@@ -32,9 +32,9 @@ class DbCreation implements IDatabaseMigration
             ->AddColumn('Status', 'int')
             ->AddReference('localuser', 'Id', array('not null'), 'PublishedById');
 
-        $migrator->CreateTable('postcategorytag')
+        $migrator->CreateTable('posttag')
             ->AddPrimaryKey('Id', 'int')
-            ->AddReference('category', 'Id', array('not null'), 'CategoryId')
+            ->AddReference('tag', 'Id', array('not null'), 'TagId')
             ->AddReference('post', 'Id', array('not null'), 'PostId');
 
         $migrator->CreateTable('postcontent')
