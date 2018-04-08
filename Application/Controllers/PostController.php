@@ -33,9 +33,13 @@ class PostController extends AdminController
             return $this->HttpNotFound();
         }
 
+        $this->EnqueueCssFiles(['summernote.css']);
+        $this->EnqueueJavascript(['summernote.js', 'editor.js']);
+
         $this->Title = 'Edit Post';
 
         $this->Set('Post', $post);
+        $this->Set('PostStatuses', $this->Models->PostStatus->All());
 
         return $this->View();
     }

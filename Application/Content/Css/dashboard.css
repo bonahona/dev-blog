@@ -35,6 +35,10 @@
     width: 100%;
 }
 
+.note-editable{
+    height: 400px;    
+}
+
 /* Hide for mobile, show later */
 .sidebar {
     display: none;
