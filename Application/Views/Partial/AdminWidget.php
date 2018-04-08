@@ -5,10 +5,10 @@
             <div class="col-lg-12">
                 <ul class="list-unstyled mb-0">
                     <li>
-                        <a href="#">Create Post</a>
+                        <a href="/post/create">Create Post</a>
                     </li>
                     <li>
-                        <a href="#">Manage Posts</a>
+                        <a href="/post">Manage Posts</a>
                     </li>
                     <li>
                         <a href="/tag">Manage tags</a>
