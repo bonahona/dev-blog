@@ -1,6 +1,8 @@
-<div class="card my-4 card-8">
-    <h5 class="card-header">Admin</h5>
-    <div class="card-body">
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h5 class="panel-title">Admin</h5>
+    </div>
+    <div class="panel-body">
         <div class="row">
             <div class="col-lg-12">
                 <ul class="list-unstyled mb-0">

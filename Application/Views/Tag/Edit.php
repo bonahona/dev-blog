@@ -1,7 +1,8 @@
-<div class="card my-4">
-    <div class="card-body">
-        <h1>Edit Tag</h1>
-
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h1 class="panel-title">Edit tag</h1>
+    </div>
+    <div class="panel-body">
         <div class="row">
             <div class="col-lg-12">
                 <?php echo $this->Form->Start('Tag');?>

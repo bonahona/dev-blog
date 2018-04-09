@@ -22,12 +22,12 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-md-8">
+            <div class="col-md-9">
 
                 <?php echo $view;?>
 
             </div>
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <div class="row">
                     <?php echo $this->PartialView('TagWidget', ['DisplayTags' => $DisplayTags]);?>
                 </div>

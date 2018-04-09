@@ -1,7 +1,8 @@
-<div class="card my-4">
-    <div class="card-body">
-        <h1>Tags</h1>
-
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h1 class="panel-title">Tags</h1>
+    </div>
+    <div class="panel-body">
         <div class="row">
             <div class="col-lg-12">
                 <table class="table table-striped">
@@ -20,8 +21,8 @@
                             <td><?php echo $tag->DisplayName;?></td>
                             <td><?php echo $tag->IsActive;?></td>
                             <td>
-                                <a href="<?php echo "/tag/edit/" . $tag->Id;?>" class="btn btn-outline-success">
-                                    <span class="fa fa-pencil"></span>
+                                <a href="<?php echo "/tag/edit/" . $tag->Id;?>" class="btn btn-success">
+                                    <span class="glyphicon glyphicon-pencil"></span>
                                 </a>
                             </td>
                         </tr>
@@ -30,7 +31,7 @@
                 </table>
             </div>
         </div>
-        <div class="row mt-2">
+        <div class="row">
             <div class="col-lg-12">
                 <a href="/tag/create/" class="btn btn-success btn-md">Create</a>
             </div>

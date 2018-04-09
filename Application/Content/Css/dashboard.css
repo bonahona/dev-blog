@@ -1,6 +1,7 @@
-/*
- * Global add-ons
- */
+/* Move down content because we have a fixed navbar that is 50px tall */
+.container {
+    padding-top: 80px;
+}
 
 .sub-header {
     padding-bottom: 10px;
@@ -13,26 +14,6 @@
  */
 .navbar-fixed-top {
     border: 0;
-}
-
-/*
- * Sidebar
- */
-
-.card-6{
-    width: 50%;
-}
-
-.card-8{
-    width: 66.66666666666667%;
-}
-
-.card-10{
-    width: 83.33333333333333%;
-}
-
-.card-12{
-    width: 100%;
 }
 
 .note-editable{

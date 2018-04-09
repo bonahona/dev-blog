@@ -8,6 +8,14 @@ class UserController extends Controller
         if(!$this->IsLoggedIn() && !$this->Action == "Login"){
             $this->Redirect('/User/Login', array('ref' => $this->RequestUri));
         }
+
+        $this->ClearCss();
+
+        $this->EnqueueCssFiles([
+            'bootstrap.min.css',
+            'dashboard.css',
+            'font-awesome.css'
+        ]);
     }
 
     public function Login($ref = null)

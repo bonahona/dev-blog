@@ -13,7 +13,7 @@ class BaseController extends Controller
     protected  function EnqueuBasicCss()
     {
         $this->EnqueueCssFiles([
-            'bootstrap-darkly.min.css',
+            'bootstrap-dark.min.css',
             'dashboard.css',
             'font-awesome.css'
         ]);
