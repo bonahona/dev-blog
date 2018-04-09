@@ -19,7 +19,28 @@
                     </ul>
                     <div class="tab-content" id="post-tab-content">
                         <div class="tab-pane fade show active" id="content" role="tabpanel" aria-labelledby="content-tab">
-                            Content
+
+                            <div class="row">
+                                <div class="col-lg-12 my-3">
+                                    <a href="#" class="btn btn-primary btn-md"><span class="glyphicon glyphicon-plus"></span> Add section</a>
+                                </div>
+                            </div>
+
+                            <?php echo $this->PartialView('EditPostSection');?>
+                            <?php echo $this->PartialView('EditPostSection');?>
+
+                            <div class="row">
+                                <div class="col-lg-12 my-3">
+                                    <a href="#" class="btn btn-primary btn-md"><span class="glyphicon glyphicon-plus"></span> Add section</a>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-12 my-3">
+                                    <a href="#" class="btn btn-sucess btn-md">Save all</a>
+                                </div>
+                            </div>
+
                         </div>
                         <div class="tab-pane fade" id="metadata" role="tabpanel" aria-labelledby="metadata-tab">
                             <?php echo $this->Form->Start('PostMetaData');?>
