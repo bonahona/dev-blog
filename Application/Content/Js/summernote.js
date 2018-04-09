@@ -201,7 +201,7 @@ var ui = {
     icon: icon,
     options: {},
     button: function ($node, options) {
-        return renderer.create('<button type="button" class="note-btn btn btn-default btn-sm" tabindex="-1">', function ($node, options) {
+        return renderer.create('<button type="button" class="note-btn btn btn-primary btn-sm" tabindex="-1">', function ($node, options) {
             if (options && options.tooltip) {
                 $node.attr({
                     title: options.tooltip
