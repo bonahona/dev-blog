@@ -1,5 +1,7 @@
 $('document').ready(function(){
-    $('.summernote').summernote();
+    $('.summernote').summernote({
+        height: 300
+    });
 
     $('#facebookdata .submit').on('click', function(e){
         e.preventDefault();
@@ -31,6 +33,9 @@ $('document').ready(function(){
         $('#metadata input').each(function(){
             data[this.name] = $(this).val();
         });
+
+        data['HomePageText'] = $('#metadata .summernote').summernote('code');
+        alert(data['HomePageText']);
 
         $.post(
             '/postajax/updatemetadata/',
