@@ -287,6 +287,16 @@ class Controller
         return $this->HttpStatus(404);
     }
 
+    function HttpNotAuthorized()
+    {
+        return $this->HttpStatus(401);
+    }
+
+    function HttpForbidden()
+    {
+        return $this->HttpStatus(403);
+    }
+
     // Looks trough the Application folder first, then the plugin folders for layout paths
     private function GetLayoutPaths()
     {

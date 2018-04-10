@@ -18,88 +18,14 @@
                         </li>
                     </ul>
                     <div class="tab-content" id="post-tab-content">
-                        <div class="tab-pane fade show active" id="content" role="tabpanel" aria-labelledby="content-tab">
-
-                            <div class="row">
-                                <div class="col-lg-12 my-3">
-                                    <a href="#" class="btn btn-primary btn-md"><span class="glyphicon glyphicon-plus"></span> Add section</a>
-                                </div>
-                            </div>
-
-                            <?php echo $this->PartialView('EditPostSection');?>
-                            <?php echo $this->PartialView('EditPostSection');?>
-
-                            <div class="row">
-                                <div class="col-lg-12 my-3">
-                                    <a href="#" class="btn btn-primary btn-md"><span class="glyphicon glyphicon-plus"></span> Add section</a>
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-lg-12 my-3">
-                                    <a href="#" class="btn btn-sucess btn-md">Save all</a>
-                                </div>
-                            </div>
-
+                        <div class="tab-pane fade active in" id="content" role="tabpanel" aria-labelledby="content-tab">
+                            <?php echo $this->PartialView('EditContent', ['Post' => $Post]);?>
                         </div>
                         <div class="tab-pane fade" id="metadata" role="tabpanel" aria-labelledby="metadata-tab">
-                            <?php echo $this->Form->Start('PostMetaData');?>
-                            <?php echo $this->Form->Hidden('Id');?>
-                            <div class="form-group">
-                                <label>Navigation Title</label>
-                                <?php echo $this->Form->Input('NavigationTitle', array('attributes' => array('class' => 'form-control')));?>
-                            </div>
-                            <div class="form-group">
-                                <label>Masthead Image Url</label>
-                                <?php echo $this->Form->Input('MastHeadImageUrl', array('attributes' => array('class' => 'form-control')));?>
-                            </div>
-                            <div class="form-group">
-                                <label>Home page text</label>
-                                <?php echo $this->Form->Area('HomePageText', array('attributes' => array('class' => 'form-control summernote', 'rows' => '30')));?>
-                            </div>
-                            <div class="form-group">
-                                <label>Status</label>
-                                <?php echo $this->Form->Select('PostStatusId', $PostStatuses, array('key' => 'Id', 'value' => 'DisplayName', 'attributes' => array('class' => 'form-control')));?>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <h5>Tags</h5>
-                                    <div class="row ms-0 my-2">
-                                        <div class="btn btn-primary btn-md">Programming <span class="fa fa-times-circle-o"></span></div>
-                                        <div class="btn btn-primary btn-md">Design <span class="fa fa-times-circle-o"></span></div>
-                                        <div class="btn btn-primary btn-md">Editor <span class="fa fa-times-circle-o"></span></div>
-                                        <div class="btn btn-primary btn-md">Textures <span class="fa fa-times-circle-o"></span></div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-lg-6">
-                                    <div class="input-group">
-                                        <?php echo $this->Form->Select('TagId', $Tags, array('key' => 'Id', 'value' => 'DisplayName', 'attributes' => array('class' => 'form-control')));?>
-                                        <span class="input-group-btn">
-                                            <a data-target="/post/addtag" class="btn btn-success" id="addTag">Add</a>
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                            <?php echo $this->Form->Submit('Save', array('attributes' => array('class' => 'btn btn-md btn-success')));?>
-                            <?php echo $this->Form->End();?>
+                            <?php echo $this->PartialView('EditMetaData', ['Post' => $Post, 'PostStatuses' => $PostStatuses, 'Tags' => $Tags]);?>
                         </div>
                         <div class="tab-pane fade" id="facebook" role="tabpanel" aria-labelledby="facebook-tab">
-                            <?php echo $this->Form->Start('PostFacebook');?>
-                            <?php echo $this->Form->Hidden('Id');?>
-                            <div class="form-group">
-                                <label>Opengraph Title</label>
-                                <?php echo $this->Form->Input('OgTitle', array('attributes' => array('class' => 'form-control')));?>
-                            </div>
-                            <div class="form-group">
-                                <label>Opengraph Description</label>
-                                <?php echo $this->Form->Input('OgDescription', array('attributes' => array('class' => 'form-control')));?>
-                            </div>
-                            <?php echo $this->Form->Submit('Save', array('attributes' => array('class' => 'btn btn-md btn-success')));?>
-                            <?php echo $this->Form->End();?>
+                            <?php echo $this->PartialView('EditFacebook', ['Post' => $Post]);?>
                         </div>
                     </div>
                 </div>

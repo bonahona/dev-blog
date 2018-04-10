@@ -6,7 +6,7 @@ class PostController extends AdminController
     {
         $this->Title = "View Posts";
 
-        $posts = $this->Models->Post->All();
+        $posts = $this->Models->Post->All()->OrderBy('CreateDate');
         $this->Set('Posts', $posts);
 
         return $this->View();
@@ -16,7 +16,8 @@ class PostController extends AdminController
     {
         $post = $this->Models->Post->Create([
             'PostStatusId' => 1,
-            'PublishedById' => $this->GetCurrentUser()['LocalUser']
+            'PublishedById' => $this->GetCurrentUser()['LocalUser'],
+            'CreateDate' => date('Y-m-d H:i:s')
         ])->Save();
 
         return $this->Redirect('/post/edit/' . $post->Id);
