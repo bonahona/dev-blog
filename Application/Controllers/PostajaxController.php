@@ -10,7 +10,23 @@ class PostajaxController extends Controller
 
     public function UpdateMetaData()
     {
-        print_r($this->GetBody());
+        $data = json_decode($this->GetBody(), true);
+
+        $id = $data['Id'];
+        $post = $this->Models->Post->Find($id);
+
+        if($post == null){
+            return $this->HttpNotFound();
+        }
+
+        foreach($data as $key => $value){
+            $post->$key = $value;
+        }
+
+        $post->EditDate = date('Y-m-d H:i:s');
+        $post->Save();
+
+        return $this->Json(['Status' => 'ok']);
     }
 
     public function UpdateFacebook()
@@ -28,6 +44,7 @@ class PostajaxController extends Controller
             $post->$key = $value;
         }
 
+        $post->EditDate = date('Y-m-d H:i:s');
         $post->Save();
 
         return $this->Json(['Status' => 'ok']);

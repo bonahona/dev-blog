@@ -1,22 +1,30 @@
-<form name="metaData">
-    <input type="hidden" name="data[PostMetaData][Id]" value="<?php echo $Post->Id;?>"/>
+<form id="metadata" name="metadata">
+    <input type="hidden" name="Id" value="<?php echo $Post->Id;?>"/>
+    <div class="form-group">
+        <label>Title</label>
+        <input type="text" name="Title" value="<?php echo $Post->Title;?>" class="form-control"/>
+    </div>
     <div class="form-group">
         <label>Navigation Title</label>
-        <input type="text" name="data[PostMetaData][NavigationTitle]" value="<?php echo $Post->NavigationTitle;?>" class="form-control"/>
+        <input type="text" name="NavigationTitle" value="<?php echo $Post->NavigationTitle;?>" class="form-control"/>
     </div>
     <div class="form-group">
         <label>Masthead Image Url</label>
-        <input type="text" name="data[PostMetaData][MastHeadImageUrl]" value="<?php echo $Post->MastHeadImageUrl;?>" class="form-control"/>
+        <input type="text" name="MastHeadImageUrl" value="<?php echo $Post->MastHeadImageUrl;?>" class="form-control"/>
     </div>
     <div class="form-group">
         <label>Home page text</label>
-        <textarea name="data[PostMetaData][HomePageText]" rows="30" class="summernote">
+        <textarea name="HomePageText" rows="30" class="summernote">
             <?php echo $Post->HomePageText;?>
         </textarea>
     </div>
     <div class="form-group">
         <label>Status</label>
-        <?php echo $this->Form->Select('PostStatusId', $PostStatuses, array('key' => 'Id', 'value' => 'DisplayName', 'attributes' => array('class' => 'form-control')));?>
+        <select name="PostStatusId" class="form-control">
+            <?php foreach($PostStatuses as $postStatus):?>
+                <option value="<?php echo $postStatus->Id;?>" <?php if($Post->PostStatusId == $postStatus->Id) echo ' selected="selected"';?>> <?php echo $postStatus->DisplayName;?></option>
+            <?php endforeach;?>
+        </select>
     </div>
 
     <div class="row">
@@ -41,5 +49,5 @@
             </div>
         </div>
     </div>
-    <?php echo $this->Form->Submit('Save', array('attributes' => array('class' => 'btn btn-md btn-success')));?>
+    <button class="btn btn-success btn-md submit" role="button">Save</button>
 </form>

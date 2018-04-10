@@ -1,4 +1,4 @@
-<form name="facebookData" id="facebookData">
+<form name="facebookdata" id="facebookdata">
     <input type="hidden" name="Id" value="<?php echo $Post->Id;?>"/>
     <div class="form-group">
         <label>Opengraph Title</label>
