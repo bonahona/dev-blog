@@ -34,8 +34,11 @@ $('document').ready(function(){
             data[this.name] = $(this).val();
         });
 
+        $('#metadata select').each(function(){
+            data[this.name] = $(this).val();
+        });
+
         data['HomePageText'] = $('#metadata .summernote').summernote('code');
-        alert(data['HomePageText']);
 
         $.post(
             '/postajax/updatemetadata/',
