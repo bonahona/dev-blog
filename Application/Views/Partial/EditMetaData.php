@@ -41,11 +41,12 @@
 
     <div class="row">
         <div class="col-lg-6">
-            <div class="input-group">
+            <div class="input-group tags">
+
                 <?php echo $this->Form->Select('TagId', $Tags, array('key' => 'Id', 'value' => 'DisplayName', 'attributes' => array('class' => 'form-control')));?>
                 <span class="input-group-btn">
-                                            <a data-target="/post/addtag" class="btn btn-success" id="addTag">Add</a>
-                                        </span>
+                    <button id="addTag" data-target="/post/addtag" class="btn btn-success btn-md" id="addTag">Add</button>
+                </span>
             </div>
         </div>
     </div>

@@ -41,6 +41,25 @@ class PostController extends AdminController
 
         $this->Set('Post', $post);
         $this->Set('PostStatuses', $this->Models->PostStatus->All());
+
+        $tags = $this->Models->Tag->All();
+        $usedTags = $post->PostTags();
+
+        $unusedTags = [];
+        foreach($tags as $tag){
+            $found = false;
+            foreach($usedTags as $usedTag){
+                if($usedTag->TagId == $tag->Id){
+                    $found = true;
+                }
+            }
+
+            if(!$found){
+                $unusedTags[] = $tag;
+            }
+        }
+
+        $this->Set('UnusedTags', $unusedTags);
         $this->Set('Tags', $this->Models->Tag->All());
 
         return $this->View();

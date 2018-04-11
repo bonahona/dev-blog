@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-lg-12">
-        <?php echo $this->Form->Start('PostMetaData');?>
+        <form name="postSection" data-id="<?php echo $PostSection->Id;?>">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <a href="#" class="btn btn-primary">Deactivate</a>
@@ -8,8 +8,9 @@
                     <a href="#" class="btn btn-primary">Move down</a>
                 </div>
                 <div class="panel-body">
-                    <?php echo $this->Form->Hidden('Id');?>
+                    <input type="hidden" name="Id" value="<?php echo $PostSection->Id;?>"/>
                     <div class="form-group">
+                        <textarea name="Content" rows="30" class="form-control delayed-summernote"/>
                         <?php echo $this->Form->Area('Content', array('attributes' => array('class' => 'form-control summernote', 'rows' => '30')));?>
                     </div>
                 </div>
@@ -22,6 +23,6 @@
                     </div>
                 </div>
             </div>
-        <?php echo $this->Form->End();?>
+        </form>
     </div>
 </div>

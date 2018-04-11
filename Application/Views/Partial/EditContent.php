@@ -4,8 +4,9 @@
     </div>
 </div>
 
-<?php echo $this->PartialView('EditPostSection');?>
-<?php echo $this->PartialView('EditPostSection');?>
+<?php foreach($Post->PostContent as $postContent):?>
+    <?php echo $this->PartialView('EditPostSection', ['PostContent' => $postContent]);?>
+<?php endforeach;?>
 
 <div class="row">
     <div class="col-lg-12 my-3">
