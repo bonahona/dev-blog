@@ -43,6 +43,8 @@ class PostController extends AdminController
         $this->Set('PostStatuses', $this->Models->PostStatus->All());
 
         $tags = $this->Models->Tag->All();
+
+        /*
         $usedTags = $post->PostTags();
 
         $unusedTags = [];
@@ -60,6 +62,7 @@ class PostController extends AdminController
         }
 
         $this->Set('UnusedTags', $unusedTags);
+        */
         $this->Set('Tags', $this->Models->Tag->All());
 
         return $this->View();
