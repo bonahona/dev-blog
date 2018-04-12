@@ -7,7 +7,7 @@
 
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="../../favicon.ico">
+    <?php echo $this->Html->Favicon('fyrvall-favicon.png');?>
 
     <title><?php echo $title;?></title>
 

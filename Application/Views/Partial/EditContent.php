@@ -8,7 +8,7 @@
 
 <div class="row">
     <div id="content-wrapper" class="col-lg-12">
-        <?php foreach($Post->PostContents as $postContent):?>
+        <?php foreach($Post->PostContents->Where(['IsDeleted' => 0]) as $postContent):?>
             <?php echo $this->PartialView('EditPostSection', ['IsTemplate' => false, 'PostContent' => $postContent]);?>
         <?php endforeach;?>
     </div>

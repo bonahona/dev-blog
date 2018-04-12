@@ -87,9 +87,22 @@ class PostajaxController extends Controller
             $postContent->$key = $value;
         }
 
-        var_dump($data);
-        var_dump($postContent->Object());
+        $postContent->Save();
 
+        return $this->Json(['Status' => 'ok']);
+    }
+
+    public function DeleteContent()
+    {
+        $data = json_decode($this->GetBody(), true);
+        $id = $data['Id'];
+
+        $postContent = $this->Models->PostContent->Find($id);
+        if($postContent == null){
+            return $this->HttpNotFound();
+        }
+
+        $postContent->IsDeleted = 1;
         $postContent->Save();
 
         return $this->Json(['Status' => 'ok']);

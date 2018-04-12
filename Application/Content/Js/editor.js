@@ -64,7 +64,12 @@ $('document').ready(function(){
             JSON.stringify(data),
             'application/json'
         ).done(function(data){
-            $('#content-wrapper').append(editPostContentTemplate(data));
+            var newContent = $('#content-wrapper').append(editPostContentTemplate(data));
+            newContent.find('.editContent').on('click', editContent);
+            newContent.find('.stopContent').on('click', stopContent);
+            newContent.find('.saveContent').on('click', saveContent);
+            newContent.find('.deleteContent').on('click', deleteContent);
+
             $('.addContent').removeClass('disabled');
         });
     });
@@ -105,7 +110,33 @@ $('document').ready(function(){
         });
     }
 
+    function deleteContent(e){
+        e.preventDefault();
+
+        var button = $(this);
+        button.addClass('disabled');
+
+        var id = $(this).closest('.postSection').attr('data-id');
+        var data = {
+            Id: id
+        };
+
+        if(confirm("Are you sure you want to delete this content?")) {
+            $.post(
+                '/postajax/deletecontent/',
+                JSON.stringify(data),
+                'application/json'
+            ).done(function (data) {
+                button.closest('.postContent').remove();
+                button.removeClass('disabled');
+            });
+        }else{
+            button.removeClass('disabled');
+        }
+    }
+
     $('.editContent').on('click', editContent);
     $('.stopContent').on('click', stopContent);
     $('.saveContent').on('click', saveContent);
+    $('.deleteContent').on('click', deleteContent);
 });
