@@ -7,7 +7,7 @@
             <div class="col-lg-12">
                 <div class="bs-component">
                     <ul class="nav nav-tabs" id="myTab" role="tablist">
-                        <li class="nav-item">
+                        <li class="nav-item active">
                             <a class="nav-link active" id="content-tab" data-toggle="tab" href="#content" role="tab" aria-controls="content" aria-selected="true">Content</a>
                         </li>
                         <li class="nav-item">
