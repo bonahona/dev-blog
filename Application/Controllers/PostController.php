@@ -35,7 +35,11 @@ class PostController extends AdminController
         }
 
         $this->EnqueueCssFiles(['summernote.css']);
-        $this->EnqueueJavascript(['summernote.js', 'editor.js']);
+        $this->EnqueueJavascript([
+            'summernote.js',
+            'handlebars-v4.0.11.js',
+            'editor.js'
+        ]);
 
         $this->Title = 'Edit Post';
 

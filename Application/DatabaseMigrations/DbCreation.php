@@ -49,6 +49,7 @@ class DbCreation implements IDatabaseMigration
             ->AddPrimaryKey('Id', 'int')
             ->AddColumn('SortOrder', 'int', array('not null', 'default 0'))
             ->AddColumn('IsActive', 'int(1)', array('not null', 'default 0'))
+            ->AddColumn('IsDeleted', 'int(1)', array('not null', 'default 0'))
             ->AddColumn('Content', 'text')
             ->AddReference('post', 'Id', array('not null'), 'PostId');
     }

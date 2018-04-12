@@ -14,8 +14,7 @@ class BaseController extends Controller
     {
         $this->EnqueueCssFiles([
             'bootstrap-dark.min.css',
-            'dashboard.css',
-            'font-awesome.css'
+            'dashboard.css'
         ]);
     }
 

@@ -64,12 +64,13 @@ class PostajaxController extends Controller
             'PostId' => $id,
             'SortOrder' => 0,
             'AsActive' => 1,
+            'AsDeleted' => 1,
             'content' => ''
         ]);
 
         $postContent->Save();
 
-        return $this->Json(['Status' => 'ok']);
+        return $this->Json($postContent->Object());
     }
 
     public function SaveContent()
@@ -77,19 +78,19 @@ class PostajaxController extends Controller
         $data = json_decode($this->GetBody(), true);
         $id = $data['Id'];
 
-        $post = $this->Models->Post->Find($id);
-        if($post == null){
+        $postContent = $this->Models->PostContent->Find($id);
+        if($postContent == null){
             return $this->HttpNotFound();
         }
 
         foreach($data as $key => $value){
-            $post->$key = $value;
+            $postContent->$key = $value;
         }
 
         var_dump($data);
-        var_dump($post->Object());
+        var_dump($postContent->Object());
 
-        $post->Save();
+        $postContent->Save();
 
         return $this->Json(['Status' => 'ok']);
     }

@@ -6408,8 +6408,12 @@ var VideoDialog = /** @class */ (function () {
             // this is not a known video link. Now what, Cat? Now what?
             return false;
         }
-        $video.addClass('note-video-clip');
-        return $video[0];
+        $video.addClass('embed-responsive');
+        var $result = $$1('<div>')
+            .attr('class', 'embed-responsive embed-responsive-16by9')
+            .append($video[0]);
+
+        return $result[0];
     };
     VideoDialog.prototype.show = function () {
         var _this = this;

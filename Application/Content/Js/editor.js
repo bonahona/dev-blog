@@ -3,6 +3,8 @@ $('document').ready(function(){
         height: 300
     });
 
+    var editPostContentTemplate = Handlebars.compile($('#postContentTemplate').html());
+
     $('#facebookdata .submit').on('click', function(e){
         e.preventDefault();
 
@@ -62,31 +64,31 @@ $('document').ready(function(){
             JSON.stringify(data),
             'application/json'
         ).done(function(data){
+            $('#content-wrapper').append(editPostContentTemplate(data));
             $('.addContent').removeClass('disabled');
         });
     });
 
-    $('.editContent').on('click', function(e){
-       e.preventDefault();
+    function editContent(e){
+        e.preventDefault();
 
-       $(this).closest('.postSection').find('.editableContent').summernote({
-           focus: true
-       });
-    });
+        $(this).closest('.postSection').find('.editableContent').summernote();
+    }
 
-    $('.stopContent').on('click', function(e){
+    function stopContent(e){
         e.preventDefault();
 
         $(this).closest('.postSection').find('.editableContent').summernote('destroy');
-    });
+    }
 
-    $('.saveContent').on('click', function(e){
+    function saveContent(e){
         e.preventDefault();
 
         var button = $(this);
         button.addClass('disabled');
 
         var content = $(this).closest('.postSection').find('.editableContent').summernote('code');
+        $(this).closest('.postSection').find('.editableContent').summernote('destroy');
         var id = $(this).closest('.postSection').attr('data-id');
 
         var data = {
@@ -101,5 +103,9 @@ $('document').ready(function(){
         ).done(function(data){
             button.removeClass('disabled');
         });
-    });
+    }
+
+    $('.editContent').on('click', editContent);
+    $('.stopContent').on('click', stopContent);
+    $('.saveContent').on('click', saveContent);
 });
