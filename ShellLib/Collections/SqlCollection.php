@@ -168,6 +168,30 @@ class SqlCollection implements IDataCollection
         return false;
     }
 
+    public function Map(callable $callback)
+    {
+        $result = new Collection();
+        $this->FetchData();
+
+        foreach($this->m_items as $item){
+            $result->Add($callback($item));
+        }
+
+        return $result;
+    }
+
+    public function MapToArray($key)
+    {
+        $result = [];
+        $this->FetchData();
+
+        foreach($this->All() as $item){
+            $result[$item->$key] = $item;
+        }
+
+        return $result;
+    }
+
     public function Take($count)
     {
         $this->TakeCondition = $count;

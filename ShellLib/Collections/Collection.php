@@ -135,6 +135,26 @@ class Collection implements IDataCollection
         return false;
     }
 
+    public function Map(callable $callback)
+    {
+        $result = new Collection();
+        foreach($this->m_items as $item){
+            $result[] = $callback($item);
+        }
+
+        return $result;
+    }
+
+    public function MapToArray($key)
+    {
+        $result = [];
+        foreach($this->m_items as $item){
+            $result[$item->$key] = $item;
+        }
+
+        return $result;
+    }
+
     public function Take($count)
     {
         $result = new Collection();

@@ -12,6 +12,29 @@
         <label>Masthead Image Url</label>
         <input type="text" name="MastHeadImageUrl" value="<?php echo $Post->MastHeadImageUrl;?>" class="form-control"/>
     </div>
+
+    <div class="row my-2">
+        <div class="col-lg-6">
+            <div class="input-group tags">
+
+                <div class="dropdown">
+                    <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                        Tags
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu">
+                        <?php foreach($Tags as $tag):?>
+                            <li class="ms-2 dark-grey-text">
+                                <input id="<?php echo $tag->IdName;?>" type="checkbox" name="<?php echo "tag[" . $tag->Id . "]";?>" value="1" <?php if($tag->IsUsed) echo 'checked="true"';?>"/>
+                                <label for="<?php echo $tag->IdName;?>"><?php echo $tag->DisplayName;?></label>
+                            </li>
+                        <?php endforeach;?>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="form-group">
         <label>Home page text</label>
         <textarea name="HomePageText" rows="30" class="summernote">
@@ -27,40 +50,5 @@
         </select>
     </div>
 
-    <div class="row">
-        <div class="col-lg-12">
-            <h5>Tags</h5>
-            <div class="row ms-0 my-2">
-                <div class="btn btn-primary btn-md">Programming <span class="fa fa-times-circle-o"></span></div>
-                <div class="btn btn-primary btn-md">Design <span class="fa fa-times-circle-o"></span></div>
-                <div class="btn btn-primary btn-md">Editor <span class="fa fa-times-circle-o"></span></div>
-                <div class="btn btn-primary btn-md">Textures <span class="fa fa-times-circle-o"></span></div>
-            </div>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-lg-6">
-            <div class="input-group tags">
-
-                <div class="dropdown">
-                    <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                        Tags
-                        <span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu">
-                        <?php foreach($Tags as $tag):?>
-                            <li><?php echo $tag->DisplayName;?></li>
-                        <?php endforeach;?>
-                    </ul>
-                </div>
-
-                <?php echo $this->Form->Select('TagId', $Tags, array('key' => 'Id', 'value' => 'DisplayName', 'attributes' => array('class' => 'form-control')));?>
-                <span class="input-group-btn">
-                    <button id="addTag" data-target="/post/addtag" class="btn btn-success btn-md" id="addTag">Add</button>
-                </span>
-            </div>
-        </div>
-    </div>
     <button class="btn btn-success btn-md submit" role="button">Save</button>
 </form>

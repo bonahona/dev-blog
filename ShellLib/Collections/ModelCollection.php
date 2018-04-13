@@ -73,12 +73,34 @@ class ModelCollection implements ICollection
         return $this->GetInstance()->GetDatabase()->Any($this, $whereConditions['ConditionString'], $whereConditions['Parameters']);
     }
 
+    /* @return ICollection */
     public function All()
     {
         $result = $this->GetInstance()->GetDatabase()->All($this);
 
         foreach($result as $entry){
             $entry->OnLoad();
+        }
+
+        return $result;
+    }
+
+    public function Map(callable $callback)
+    {
+        $result = new Collection();
+
+        foreach($this->All() as $item){
+            $result->Add($callback($item));
+        }
+
+        return $result;
+    }
+
+    public function MapToArray($key)
+    {
+        $result = [];
+        foreach($this->All() as $item){
+            $result[$item->$key] = $item;
         }
 
         return $result;

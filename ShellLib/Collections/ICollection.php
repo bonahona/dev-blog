@@ -30,4 +30,10 @@ interface ICollection
 
     /* @return bool */
     public function Any($conditions);
+
+    /* @return ICollection */
+    public function Map(callable $callback);
+
+    /* @return array */
+    public function MapToArray($key);
 }
