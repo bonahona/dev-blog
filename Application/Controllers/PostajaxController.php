@@ -23,6 +23,24 @@ class PostajaxController extends Controller
             $post->$key = $value;
         }
 
+        $tagValue = array_values($data['tags']);
+        foreach($post->PostTags as $tag){
+            if(!in_array($tag->TagId, $tagValue)){
+                $tag->IsDeleted = 1;
+                $tag->Save();
+            }
+        }
+
+        foreach($data['tags'] as $key => $value){
+            $tag = $post->PostTags->Where(['TagId' => $value])->First();
+            if($tag == null){
+                $tag = $this->Models->PostTag->Create(['TagId' => $value, 'PostId' => $post->Id, 'IsDeleted' => 0]);
+            }
+
+            $tag->IsDeleted = 0;
+            $tag->Save();
+        }
+
         $post->EditDate = date('Y-m-d H:i:s');
         $post->Save();
 

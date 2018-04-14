@@ -15,7 +15,7 @@
 
     <div class="row my-2">
         <div class="col-lg-6">
-            <div class="input-group tags">
+            <div id="tags" class="input-group">
 
                 <div class="dropdown">
                     <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
@@ -25,7 +25,7 @@
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenu">
                         <?php foreach($Tags as $tag):?>
                             <li class="ms-2 dark-grey-text">
-                                <input id="<?php echo $tag->IdName;?>" type="checkbox" name="<?php echo "tag[" . $tag->Id . "]";?>" value="1" <?php if($tag->IsUsed) echo 'checked="true"';?>"/>
+                                <input id="<?php echo $tag->IdName;?>" type="checkbox" name="<?php echo $tag->DisplayName?>" value="<?php echo $tag->Id;?>" <?php if($tag->IsUsed) echo 'checked="true"';?>/>
                                 <label for="<?php echo $tag->IdName;?>"><?php echo $tag->DisplayName;?></label>
                             </li>
                         <?php endforeach;?>

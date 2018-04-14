@@ -32,6 +32,7 @@ $('document').ready(function(){
         button.addClass('disabled');
 
         var data = {};
+
         $('#metadata input').each(function(){
             data[this.name] = $(this).val();
         });
@@ -39,6 +40,13 @@ $('document').ready(function(){
         $('#metadata select').each(function(){
             data[this.name] = $(this).val();
         });
+
+        var tags = {};
+        $('#tags input:checked').each(function(){
+            tags[this.name] = $(this).val();
+        });
+
+        data['tags'] = tags;
 
         data['HomePageText'] = $('#metadata .summernote').summernote('code');
 

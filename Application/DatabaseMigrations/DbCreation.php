@@ -42,6 +42,7 @@ class DbCreation implements IDatabaseMigration
 
         $migrator->CreateTable('posttag')
             ->AddPrimaryKey('Id', 'int')
+            ->AddColumn('IsDeleted', 'int(1)', array('not null', 'default 0'))
             ->AddReference('tag', 'Id', array('not null'), 'TagId')
             ->AddReference('post', 'Id', array('not null'), 'PostId');
 

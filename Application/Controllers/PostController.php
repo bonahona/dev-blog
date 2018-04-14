@@ -52,7 +52,7 @@ class PostController extends AdminController
             $tag->IdName = "tag-" . $tag->DisplayName;
         }
 
-        foreach($post->PostTags->Map(function($item){ return $item->Tag; }) as $usedTag){
+        foreach($post->PostTags->Where(['IsDeleted' => 0])->Map(function($item){ return $item->Tag; }) as $usedTag){
             $tags[$usedTag->Id]->IsUsed = true;
         }
 

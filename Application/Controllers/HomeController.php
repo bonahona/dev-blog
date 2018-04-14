@@ -4,16 +4,42 @@ class HomeController extends BaseController
 {
     public function Index()
     {
-        $this->Title = "Test";
-
-        return $this->View();
+        if(count($this->Parameters) == 0){
+            return $this->ShowHomePage();
+        }else{
+            return $this->ShowPost($this->Parameters);
+        }
     }
 
-    public function Post()
+    private function ShowHomePage()
     {
-        $this->Title = "Test";
+        return $this->View('Index');
+    }
 
-        return $this->View();
+    private function ShowPost($path)
+    {
+        $post = $this->Models->Post->Where(['NavigationTitle' => $path[0]])->First();
+        if($post == null){
+            return $this->HttpNotFound();
+        }
+
+        $publishStatus = $this->Models->PostStatus->Where(['DisplayName' => 'Published'])->First();
+        if($publishStatus == null){
+            return $this->HttpNotFound();
+        }
+
+        $post->IsPublished = true;
+
+        if($post->PostStatusId != $publishStatus->Id){
+            if($this->IsLoggedIn()){
+                $post->IsPublished = false;
+            }else {
+                return $this->Redirect('/admin', ['ref' => $this->RequestUri]);
+            }
+        }
+
+        $this->Set('Post', $post);
+        return $this->View('Post');
     }
 
     public function Search()

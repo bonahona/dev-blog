@@ -17,9 +17,46 @@
       }
     },
     {
-      "/{Controller}/{Action}/{...}": {
-        "Controller": "{Controller}",
+      "/about/{...}": {
+        "Controller": "Home",
+        "Action": "About",
+        "Variables": {
+        }
+      }
+    },
+    {
+      "/post/{Action}/{...}": {
+        "Controller": "Post",
         "Action": "{Action}",
+        "Variables": "{...}"
+      }
+    },
+    {
+      "/post/{Action}/{...}": {
+        "Controller": "Post",
+        "Action": "{Action}",
+        "Variables": "{...}"
+      }
+    },
+    {
+      "/postajax/{Action}/{...}": {
+        "Controller": "Postajax",
+        "Action": "{Action}",
+        "Variables": {
+        }
+      }
+    },
+    {
+      "/tag/{Action}/{...}": {
+        "Controller": "Tag",
+        "Action": "{Action}",
+        "Variables": "{...}"
+      }
+    },
+    {
+      "/{...}": {
+        "Controller": "Home",
+        "Action": "Index",
         "Variables": "{...}"
       }
     }
