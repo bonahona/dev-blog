@@ -9,11 +9,15 @@
 <?php endif;?>
 
 <h4 class="light-grey">
-    Published <?php echo date('Y-m-d', strtotime($post->PublishDate));?> <br/>
+    <?php if($Post->PublishDate != ""):?>
+        Published <?php echo date('Y-m-d', strtotime($Post->PublishDate));?> <br/>
+    <?php else:?>
+        Not yet published <br/>
+    <?php endif;?>
     <span class="small">by Björn Fyrvall</span>
 </h4>
 <?php if($Post->EditDate != $Post->PublishDate):?>
-    <h6 class="light-grey">Edited <?php echo date('Y-m-d', strtotime($post->EditDate));?></h6>
+    <h6 class="light-grey">Edited <?php echo date('Y-m-d', strtotime($Post->EditDate));?></h6>
 <?php endif;?>
 
 <?php if(!$Post->IsPublished):?>
