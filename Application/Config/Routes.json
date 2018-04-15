@@ -25,6 +25,13 @@
       }
     },
     {
+      "/user/{Action}/{...}": {
+        "Controller": "User",
+        "Action": "{Action}",
+        "Variables": "{...}"
+      }
+    },
+    {
       "/post/{Action}/{...}": {
         "Controller": "Post",
         "Action": "{Action}",

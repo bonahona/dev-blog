@@ -23,6 +23,7 @@ class HomeController extends BaseController
             return $this->HttpNotFound();
         }
 
+        $this->Title = $post->Title;
         $publishStatus = $this->Models->PostStatus->Where(['DisplayName' => 'Published'])->First();
         if($publishStatus == null){
             return $this->HttpNotFound();

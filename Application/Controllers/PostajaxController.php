@@ -23,6 +23,15 @@ class PostajaxController extends Controller
             $post->$key = $value;
         }
 
+        $publishStatus = $this->Models->PostStatus->Where(['DisplayName' => 'Published'])->First();
+        if($publishStatus == null){
+            return $this->HttpStatus(500, 'Failed to lookup publish status');
+        }
+
+        if($post->PostStatusId == $publishStatus->Id && $post->PublishDate == ""){
+            $post->PublishDate = date('Y-m-d H:i:s');
+        }
+
         $tagValue = array_values($data['tags']);
         foreach($post->PostTags as $tag){
             if(!in_array($tag->TagId, $tagValue)){

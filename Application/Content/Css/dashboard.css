@@ -12,6 +12,10 @@ html {
     border-bottom: 1px solid #eee;
 }
 
+.full{
+    width: 100%;
+}
+
 /*
  * Top navigation
  * Hide default border to remove 1px line.
