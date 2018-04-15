@@ -7,7 +7,7 @@ class HomeController extends BaseController
         if(count($this->Parameters) == 0){
             return $this->ShowHomePage();
         }else{
-            return $this->ShowPost($this->Parameters);
+            return $this->FindPost($this->Parameters);
         }
     }
 
@@ -26,13 +26,23 @@ class HomeController extends BaseController
         return $this->View('Index');
     }
 
-    private function ShowPost($path)
+    private function FindPost($path)
     {
         $post = $this->Models->Post->Where(['NavigationTitle' => $path[0]])->First();
-        if($post == null){
-            return $this->HttpNotFound();
+        if($post != null){
+            return $this->ShowPost($post);
         }
 
+        $sharePost = $this->Models->SharePost->Where(['NavigationLink' => $path[0]])->First();
+        if($sharePost != null){
+            return $this->ShowShare($sharePost->Post);
+        }
+
+        return $this->HttpNotFound();
+    }
+
+    private function ShowPost($post)
+    {
         $this->Title = $post->Title;
         $publishStatus = $this->Models->PostStatus->Where(['DisplayName' => 'Published'])->First();
         if($publishStatus == null){
@@ -47,6 +57,24 @@ class HomeController extends BaseController
             }else {
                 return $this->Redirect('/admin', ['ref' => $this->RequestUri]);
             }
+        }
+
+        $this->Set('Post', $post);
+        return $this->View('Post');
+    }
+
+    private function ShowShare($post)
+    {
+        $this->Title = $post->Title;
+        $publishStatus = $this->Models->PostStatus->Where(['DisplayName' => 'Published'])->First();
+        if($publishStatus == null){
+            return $this->HttpNotFound();
+        }
+
+        $post->IsPublished = true;
+
+        if($post->PostStatusId != $publishStatus->Id){
+            $post->IsPublished = false;
         }
 
         $this->Set('Post', $post);

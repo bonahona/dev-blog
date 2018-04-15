@@ -60,4 +60,30 @@ class PostController extends AdminController
         return $this->View();
     }
 
+    public function Share($id = null)
+    {
+        if($id   == null){
+            return $this->HttpNotFound();
+        }
+
+        $post = $this->Models->Post->Find($id);
+        if($post == null){
+            return $this->HttpNotFound();
+        }
+
+        $sharePost = $post->SharePosts->Where(['IsValid' => '1'])->First();
+
+        if($sharePost == null) {
+
+            $sharePost = $this->Models->SharePost->Create([
+                'PostId' => $post->Id,
+                'IsValid' => 1,
+                'NavigationLink' => uniqid('', true)
+            ]);
+
+            $sharePost->Save();
+        }
+
+        return $this->Redirect('/' . $sharePost->NavigationLink);
+    }
 }

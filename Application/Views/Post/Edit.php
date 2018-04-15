@@ -4,6 +4,7 @@
             <h1 class="panel-title pull-left">Edit post</h1>
             <div class="pull-right">
                 <a target="_blank" href="<?php echo "/" . $Post->NavigationTitle;?>" class="btn btn-md btn-success">Preview</a>
+                <a target="_blank" href="<?php echo "/post/share/" . $Post->Id;?>" class="btn btn-md btn-success">Share</a>
             </div>
         </div>
     </div>
