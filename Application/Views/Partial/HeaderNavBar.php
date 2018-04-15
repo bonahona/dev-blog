@@ -6,7 +6,7 @@
             <a class="navbar-brand light-grey" href="http://fyrvall.com">Fyrvall.com</a>
         </div>
 
-        <form method="get" action="/Projects/Search" class="navbar-form navbar-right">
+        <form method="get" action="/search" class="navbar-form navbar-right">
             <?php if(isset($SearchQuery)):?>
                 <input type="text" name="keywords" class="form-control" placeholder="Search..."/ value="<?php echo $SearchQuery;?>">
             <?php else:?>

@@ -55,7 +55,48 @@ class HomeController extends BaseController
 
     public function Search()
     {
-        return $this->View();
+        $this->Title = "Search result";
+
+        if(isset($this->Get['tag'])){
+            return $this->SearchTags($this->Get['tag']);
+        }else if($this->Get['keywords']){
+            return $this->SearchKeywords($this->Get['keywords']);
+        }else{
+            return $this->HttpStatus('400');
+        }
+    }
+
+    private function SearchTags($tagName)
+    {
+        $result = new Collection();
+
+        $publishedStatus = $this->Models->PostStatus->Where(['DisplayName' => 'Published'])->First();
+        if($publishedStatus == null){
+            return $this->HttpStatus('500', 'Published status not found');
+        }
+
+        $tag = $this->Models->Tag->Where(['DisplayName' => $tagName, 'IsActive' => 1])->First();
+        if($tag != null){
+            foreach($tag->PostTags as $postTag){
+                $post = $postTag->Post;
+                if($post->PostStatusId == $publishedStatus->Id){
+                    $result->Add($post);
+                }
+            }
+        }
+
+        $result = $result->OrderByDescending('PublishDate');
+        $this->Set('Posts', $result);
+        return $this->View('Search');
+    }
+
+    private function SearchKeywords($keywords)
+    {
+        $result = new Collection();
+
+        $result = $result->OrderByDescending('PublishDate');
+        $this->Set('Posts', $result);
+        return $this->View('Search');
     }
 
     public function History()

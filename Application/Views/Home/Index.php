@@ -41,6 +41,14 @@
     </div>
 <?php endforeach;?>
 
+<div class="row">
+    <div class="col-lg-12">
+        <a href="/history" class="btn btn-success btn-md">
+            View all posts
+        </a>
+    </div>
+</div>
+
 <!--
 <div class="card my-4">
     <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
