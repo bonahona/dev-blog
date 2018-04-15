@@ -106,7 +106,7 @@ class HomeController extends BaseController
         $result->AddRange($likePostText);
         $result->AddRange($likePostContent);
 
-        $result = $result->OrderByDescending('PublishDate');
+        $result = $result->OrderByDescending('PublishDate')->MapToArray('Id');
 
         $this->Set('SearchQuery', $keywords);
         $this->Set('Posts', $result);
