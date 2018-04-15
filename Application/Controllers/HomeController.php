@@ -94,7 +94,21 @@ class HomeController extends BaseController
     {
         $result = new Collection();
 
+        $exactPost = $this->Models->Post->Where(array('Title' => $keywords));
+
+        $likePostTitle = $this->Models->Post->Where(LikeCondition('Title',$keywords));
+        $likePostText = $this->Models->Post->Where(LikeCondition('HomePageText',$keywords));
+
+        $likePostContent = $this->Models->PostContent->Where(LikeCondition('Content',$keywords))->Map(function($item){ return $item->Post;});
+
+        $result->AddRange($exactPost);
+        $result->AddRange($likePostTitle);
+        $result->AddRange($likePostText);
+        $result->AddRange($likePostContent);
+
         $result = $result->OrderByDescending('PublishDate');
+
+        $this->Set('SearchQuery', $keywords);
         $this->Set('Posts', $result);
         return $this->View('Search');
     }

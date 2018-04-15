@@ -19,7 +19,7 @@
 
 <body>
 
-    <?php echo $this->PartialView('HeaderNavBar');?>
+    <?php echo $this->PartialView('HeaderNavBar', ['SearchQuery' => $SearchQuery]);?>
 
     <div class="container">
         <div class="row">
