@@ -8,18 +8,34 @@
 </div>
 <?php endif;?>
 
-<h4 class="light-grey">Published <?php echo $Post->PublishDate;?> <br/>by Björn Fyrvall</h4>
+<h4 class="light-grey">
+    Published <?php echo date('Y-m-d', strtotime($post->PublishDate));?> <br/>
+    <span class="small">by Björn Fyrvall</span>
+</h4>
 <?php if($Post->EditDate != $Post->PublishDate):?>
-    <h6 class="light-grey">Edited <?php echo $Post->EditDate;?></h6>
+    <h6 class="light-grey">Edited <?php echo date('Y-m-d', strtotime($post->EditDate));?></h6>
 <?php endif;?>
 
 <?php if(!$Post->IsPublished):?>
     <p><?php echo $Post->PostStatus->DisplayName;?></p>
 <?php endif;?>
 
-<?php foreach($Post->PostContents->Where(['IsDeleted' => 0])->OrderBy('SortOrder') as $postContent):?>
-    <?php echo $postContent->Content;?>
-<?php endforeach;?>
+<div class="row my-3">
+    <div class="col-lg-12">
+        <?php foreach($Post->PostTags as $postTag):?>
+            <span class="label label-info"><?php echo $postTag->Tag->DisplayName;?></span>
+        <?php endforeach;?>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <?php foreach($Post->PostContents->Where(['IsDeleted' => 0])->OrderBy('SortOrder') as $postContent):?>
+            <?php echo $postContent->Content;?>
+        <?php endforeach;?>
+
+    </div>
+</div>
 
 <hr/>
 
@@ -29,7 +45,7 @@
         var js, fjs = d.getElementsByTagName(s)[0];
         if (d.getElementById(id)) return;
         js = d.createElement(s); js.id = id;
-        js.src = 'https://connect.facebook.net/sv_SE/sdk.js#xfbml=1&version=v2.12&appId=420800708371856&autoLogAppEvents=1';
+        js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.12&appId=420800708371856&autoLogAppEvents=1';
         fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));
 </script>

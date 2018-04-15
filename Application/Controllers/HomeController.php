@@ -13,6 +13,16 @@ class HomeController extends BaseController
 
     private function ShowHomePage()
     {
+        $this->Title = 'Bona\'s Dev blog';
+
+        $publishStatus = $this->Models->PostStatus->Where(['DisplayName' => 'Published'])->First();
+        if($publishStatus == null){
+            return $this->HttpStatus(500, 'Failed to get publish status');
+        }
+
+        $posts = $this->Models->Post->Where(['PostStatusId' => $publishStatus->Id])->OrderByDescending('PublishDate')->Take(5);
+        $this->Set('Posts', $posts);
+
         return $this->View('Index');
     }
 
@@ -45,6 +55,21 @@ class HomeController extends BaseController
 
     public function Search()
     {
+        return $this->View();
+    }
+
+    public function History()
+    {
+        $this->Title = 'Post history';
+
+        $publishStatus = $this->Models->PostStatus->Where(['DisplayName' => 'Published'])->First();
+        if($publishStatus == null){
+            return $this->HttpStatus(500, 'Failed to get publish status');
+        }
+
+        $posts = $this->Models->Post->Where(['PostStatusId' => $publishStatus->Id])->OrderByDescending('PublishDate');
+        $this->Set('Posts', $posts);
+
         return $this->View();
     }
 

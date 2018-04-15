@@ -3,11 +3,23 @@ class BaseController extends Controller
 {
     public function BeforeAction()
     {
+        $this->LogVisit();
+
         $this->EnqueuBasicCss();
         $this->EnqueuBasicJavascript();
 
         $this->SetLinks();
+        $this->SetNewestPosts();
         $this->SetTags();
+    }
+
+    protected function LogVisit()
+    {
+        $this->Models->Visit->Create([
+            'SessionId' => session_id(),
+            'RequestUrl' => $this->RequestUri,
+            'TimeStamp' => date('Y-m-d H:i:s')
+        ])->Save();
     }
 
     protected  function EnqueuBasicCss()
@@ -34,6 +46,18 @@ class BaseController extends Controller
     protected function SetLinks()
     {
         $this->Set('ApplicationLinks', $this->Helpers->ShellAuth->GetApplicationLinks()['data']);
+    }
+
+    protected  function SetNewestPosts()
+    {
+        $publishedStatus = $this->Models->PostStatus->Where(['DisplayName' => 'Published'])->First();
+        if($publishedStatus == null){
+            // Returns an empty array. This way, nothing should crash even though no data will be displayed.
+            return array();
+        }
+
+        $posts = $this->Models->Post->Where(['PostStatusId' => $publishedStatus->Id])->OrderByDescending('PublishDate')->Take(10);
+        $this->Set('LatestPosts', $posts);
     }
 
     protected function SetTags()

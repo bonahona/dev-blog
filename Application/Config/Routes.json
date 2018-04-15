@@ -25,6 +25,14 @@
       }
     },
     {
+      "/history/{...}": {
+        "Controller": "Home",
+        "Action": "History",
+        "Variables": {
+        }
+      }
+    },
+    {
       "/user/{Action}/{...}": {
         "Controller": "User",
         "Action": "{Action}",

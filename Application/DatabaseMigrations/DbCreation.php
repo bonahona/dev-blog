@@ -53,6 +53,12 @@ class DbCreation implements IDatabaseMigration
             ->AddColumn('IsDeleted', 'int(1)', array('not null', 'default 0'))
             ->AddColumn('Content', 'text')
             ->AddReference('post', 'Id', array('not null'), 'PostId');
+
+        $migrator->CreateTable('visit')
+            ->AddPrimaryKey('Id', 'int')
+            ->AddColumn('SessionId', 'varchar(256)')
+            ->AddColumn('RequestUrl', 'varchar(256)')
+            ->AddColumn('TimeStamp', 'varchar(128)');
     }
 
     public function Down($migrator)

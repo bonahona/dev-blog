@@ -30,6 +30,9 @@
             </div>
             <div class="col-md-3">
                 <div class="row">
+                    <?php echo $this->PartialView('LastestPostsWidget', ['LatestPosts' => $LatestPosts]);?>
+                </div>
+                <div class="row">
                     <?php echo $this->PartialView('TagWidget', ['DisplayTags' => $DisplayTags]);?>
                 </div>
                 <div class="row">

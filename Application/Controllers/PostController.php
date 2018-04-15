@@ -59,4 +59,5 @@ class PostController extends AdminController
         $this->Set('Tags', $tags);
         return $this->View();
     }
+
 }

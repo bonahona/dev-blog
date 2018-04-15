@@ -1,6 +1,6 @@
 <div class="panel panel-default">
     <div class="panel-heading">
-        <h5 class="panel-title">Tags</h5>
+        <h5 class="panel-title">Display by tags</h5>
     </div>
     <div class="panel-body">
         <div class="row">
