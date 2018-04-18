@@ -301,4 +301,5 @@ hr {
     background-color: #333333;
     border: 1px solid #444444;
     margin-bottom: 3em;
+    box-shadow: 2px 2px #0003;
 }

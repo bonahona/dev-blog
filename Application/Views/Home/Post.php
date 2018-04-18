@@ -1,6 +1,6 @@
 <div class="row ms-2">
     <div class="col-lg-12 blog-entry">
-        <h1 class="mt-4"><?php echo $Post->Title;?></h1>
+        <h1 class="my-2"><?php echo $Post->Title;?></h1>
 
         <?php if($Post->MastHeadImageUrl != ""):?>
         <div class="row my-2">
