@@ -296,3 +296,9 @@ ul
 hr {
     border-top: 1px solid #ddd;
 }
+
+.blog-entry{
+    background-color: #333333;
+    border: 1px solid #444444;
+    margin-bottom: 3em;
+}

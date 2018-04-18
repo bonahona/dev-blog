@@ -1,5 +1,6 @@
 <form id="metadata" name="metadata">
     <input type="hidden" name="Id" value="<?php echo $Post->Id;?>"/>
+    <button class="btn btn-success btn-md submit my-2" role="button">Save</button>
     <div class="form-group">
         <label>Title</label>
         <input type="text" name="Title" value="<?php echo $Post->Title;?>" class="form-control"/>

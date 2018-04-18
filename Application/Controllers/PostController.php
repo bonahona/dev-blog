@@ -60,6 +60,24 @@ class PostController extends AdminController
         return $this->View();
     }
 
+    public function Preview($id = null)
+    {
+        if($id   == null){
+            return $this->HttpNotFound();
+        }
+
+        $post = $this->Models->Post->Find($id);
+        if($post == null){
+            return $this->HttpNotFound();
+        }
+
+        if($post->NavigationTitle == ""){
+            return $this->HttpStatus(400, 'Not a valid navigation title');
+        }
+
+        return $this->Redirect('/' . $post->NavigationTitle);
+    }
+
     public function Share($id = null)
     {
         if($id   == null){

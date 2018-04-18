@@ -31,7 +31,7 @@
                                 <td><?php echo $post->CreateDate;?></td>
                                 <td><?php echo $post->PostStatus->DisplayName;?></td>
                                 <td>
-                                    <a target="_blank" href="<?php echo "/" . $post->NavigationTitle;?>">Preview</a>
+                                    <a target="_blank" href="<?php echo "/post/preview/" . $post->Id;?>">Preview</a>
                                 </td>
                             </tr>
                         <?php endforeach;?>
