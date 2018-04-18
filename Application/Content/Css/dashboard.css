@@ -303,3 +303,13 @@ hr {
     margin-bottom: 3em;
     box-shadow: 2px 2px #0003;
 }
+
+blockquote small{
+    margin-left: 2em;
+    font-style: italic;
+    font-size: 0.8em;
+}
+
+blockquote small::before{
+    content: '- ';
+}
