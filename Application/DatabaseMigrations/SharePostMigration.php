@@ -1,5 +1,5 @@
 <?php
-class SharePost implements IDatabaseMigration
+class SharePostMigration implements IDatabaseMigration
 {
     public function GetUniqueName()
     {
