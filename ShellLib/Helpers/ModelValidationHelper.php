@@ -26,6 +26,8 @@ class ModelValidationHelper
             }else{
                 return $this->m_errors[$model];
             }
+        }else{
+            return array();
         }
     }
 

@@ -7,10 +7,9 @@
     <label for="Password" class="sr-only">Password</label>
     <?php echo $this->Form->Password('Password', array('attributes' => array('class' => 'form-control', 'placeholder' => 'Password', 'required' => 'true')));?>
     <?php echo $this->Form->Submit('Sign in', array('attributes' => array('class' => 'btn btn-lg btn-primary btn-block')));?>
-    <div class="row">
+    <div class="row mt-2">
         <div class="col-lg-12">
-            <?php var_dump($this->ModelValidation->GetModelError('User'));?>
-            <?php foreach($this->ModelValidation->GetModelError('User') as $error):?>
+            <?php foreach($this->ModelValidation->GetModelError('User', 'Password') as $error):?>
                 <div class="alert alert-danger">
                     <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
                     <span><?php echo $error;?></span>
