@@ -20,7 +20,7 @@ class ProjectSupport implements IDatabaseMigration
             ->AddColumn('IsDeleted', 'int(1)', array('not null', 'default 0'));
 
         $migrator->AlterTable('post')
-            ->AddReference('project', 'Id', array('not null', 'PostId'));
+            ->AddReference('project', 'Id', array('null', 'default null'), 'ProjectId');
     }
 
     public function Down($migrator)

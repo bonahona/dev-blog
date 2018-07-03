@@ -37,6 +37,15 @@
     </div>
 
     <div class="form-group">
+        <label>Project</label>
+        <select name="ProjectId" class="form-control">
+            <option value="0" <?php if($Post->ProjectId == null) echo ' selected="selected"';?>>None</option>
+            <?php foreach($ProjectIds as $projectId):?>
+                <option value="<?php echo $projectId->Id;?>" <?php if($Post->ProjectId == $projectId->Id) echo ' selected="selected"';?>> <?php echo $projectId->Name;?></option>
+            <?php endforeach;?>
+        </select>
+    </div>
+    <div class="form-group">
         <label>Home page text</label>
         <textarea name="HomePageText" rows="30" class="summernote">
             <?php echo $Post->HomePageText;?>

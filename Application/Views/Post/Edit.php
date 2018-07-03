@@ -28,7 +28,7 @@
                             <?php echo $this->PartialView('EditContent', ['Post' => $Post]);?>
                         </div>
                         <div class="tab-pane fade" id="metadata" role="tabpanel" aria-labelledby="metadata-tab">
-                            <?php echo $this->PartialView('EditMetaData', ['Post' => $Post, 'PostStatuses' => $PostStatuses, 'UnusedTags' => $UnusedTags, 'Tags' => $Tags]);?>
+                            <?php echo $this->PartialView('EditMetaData', ['Post' => $Post, 'PostStatuses' => $PostStatuses, 'ProjectIds' => $ProjectIds, 'UnusedTags' => $UnusedTags, 'Tags' => $Tags]);?>
                         </div>
                         <div class="tab-pane fade" id="facebook" role="tabpanel" aria-labelledby="facebook-tab">
                             <?php echo $this->PartialView('EditFacebook', ['Post' => $Post]);?>

@@ -69,6 +69,13 @@
       }
     },
     {
+      "/project/{Action}/{...}": {
+        "Controller": "Project",
+        "Action": "{Action}",
+        "Variables": "{...}"
+      }
+    },
+    {
       "/{...}": {
         "Controller": "Home",
         "Action": "Index",

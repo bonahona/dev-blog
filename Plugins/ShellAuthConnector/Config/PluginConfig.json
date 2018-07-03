@@ -3,8 +3,8 @@
     {
     },
     "ShellApplication": {
-        "Name": "Documentation",
-        "LocalId": "4",
+        "Name": "Dev-blog",
+        "LocalId": "2",
         "PublicKey": "-"
     },
     "ShellAuthServer": {

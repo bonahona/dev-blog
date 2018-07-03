@@ -45,6 +45,7 @@ class PostController extends AdminController
 
         $this->Set('Post', $post);
         $this->Set('PostStatuses', $this->Models->PostStatus->All());
+        $this->Set('ProjectIds', $this->Models->Project->Where(['IsDeleted' => 0]));
 
         $tags = $this->Models->Tag->All()->MapToArray('Id');
         foreach($tags as $tag){

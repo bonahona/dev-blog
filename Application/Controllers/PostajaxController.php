@@ -32,6 +32,10 @@ class PostajaxController extends Controller
             $post->PublishDate = date('Y-m-d H:i:s');
         }
 
+        if($post->ProjectId == 0){
+            $post->ProjectId = null;
+        }
+
         $tagValue = array_values($data['tags']);
         foreach($post->PostTags as $tag){
             if(!in_array($tag->TagId, $tagValue)){
