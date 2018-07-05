@@ -90,7 +90,7 @@ class HomeController extends BaseController
         }else if($this->Get['keywords']){
             return $this->SearchKeywords($this->Get['keywords']);
         }else{
-            return $this->HttpStatus('400');
+            return $this->InvalidSearchParameter();
         }
     }
 
@@ -138,6 +138,13 @@ class HomeController extends BaseController
 
         $this->Set('SearchQuery', $keywords);
         $this->Set('Posts', $result);
+        return $this->View('Search');
+    }
+
+    private function InvalidSearchParameter()
+    {
+        $this->Set('SearchQuery', '');
+        $this->Set('Posts', new Collection());
         return $this->View('Search');
     }
 
