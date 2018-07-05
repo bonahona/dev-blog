@@ -33,6 +33,9 @@
                     <?php echo $this->PartialView('LastestPostsWidget', ['LatestPosts' => $LatestPosts]);?>
                 </div>
                 <div class="row">
+                    <?php echo $this->PartialView('ProjectWidget', ['DisplayProjects' => $DisplayProjects]);?>
+                </div>
+                <div class="row">
                     <?php echo $this->PartialView('TagWidget', ['DisplayTags' => $DisplayTags]);?>
                 </div>
                 <div class="row">

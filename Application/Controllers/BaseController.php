@@ -10,6 +10,7 @@ class BaseController extends Controller
 
         $this->SetLinks();
         $this->SetNewestPosts();
+        $this->SetProjects();
         $this->SetTags();
     }
 
@@ -58,6 +59,27 @@ class BaseController extends Controller
 
         $posts = $this->Models->Post->Where(['PostStatusId' => $publishedStatus->Id])->OrderByDescending('PublishDate')->Take(10);
         $this->Set('LatestPosts', $posts);
+    }
+
+    protected function SetProjects()
+    {
+        $result = array(
+            'left' => array(),
+            'right' => array()
+        );
+
+        $projects = $this->Models->Project->Where(['IsDeleted' => 0, 'IsActive' => 1])->OrderBy('Name');
+
+        $count = 0;
+        foreach($projects as $project){
+            if($count % 2 == 0){
+                $result['left'][] = $project;
+            }else{
+                $result['right'][] = $project;
+            }
+            $count++;
+        }
+        $this->Set('DisplayProjects', $result);
     }
 
     protected function SetTags()
