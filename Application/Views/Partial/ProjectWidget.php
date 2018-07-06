@@ -8,7 +8,7 @@
                 <ul class="list-unstyled mb-0">
                     <?php foreach($DisplayProjects['left'] as $project):?>
                         <li>
-                            <a href="<?php echo "/search?project=" . $project->Name;?>"><?php echo $project->Name;?></a>
+                            <a href="<?php echo "/search?project=" . $project->GetLink();?>"><?php echo $project->Name;?></a>
                         </li>
                     <?php endforeach;?>
                 </ul>
@@ -17,7 +17,7 @@
                 <ul class="list-unstyled mb-0">
                     <?php foreach($DisplayProjects['right'] as $project):?>
                         <li>
-                            <a href="<?php echo "/search?project=" . $project->Name;?>"><?php echo $project->Name;?></a>
+                            <a href="<?php echo "/search?project=" . $project->GetLink();?>"><?php echo $project->Name;?></a>
                         </li>
                     <?php endforeach;?>
                 </ul>

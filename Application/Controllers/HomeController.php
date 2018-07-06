@@ -89,6 +89,8 @@ class HomeController extends BaseController
             return $this->SearchTags($this->Get['tag']);
         }else if($this->Get['keywords']){
             return $this->SearchKeywords($this->Get['keywords']);
+        }else if($this->Get['project']){
+            return $this->SearchProjectName($this->Get['project']);
         }else{
             return $this->InvalidSearchParameter();
         }
@@ -107,6 +109,31 @@ class HomeController extends BaseController
         if($tag != null){
             foreach($tag->PostTags as $postTag){
                 $post = $postTag->Post;
+                if($post->PostStatusId == $publishedStatus->Id){
+                    $result->Add($post);
+                }
+            }
+        }
+
+        $result = $result->OrderByDescending('PublishDate');
+        $this->Set('Posts', $result);
+        return $this->View('Search');
+    }
+
+    private function SearchProjectName($projectName)
+    {
+        $result = new Collection();
+
+        $publishedStatus = $this->Models->PostStatus->Where(['DisplayName' => 'Published'])->First();
+        if($publishedStatus == null){
+            return $this->HttpStatus('500', 'Published status not found');
+        }
+
+        $project = $this->Models->Project->Where(['Name' => urldecode($projectName), 'IsActive' => 1, 'IsDeleted' => 1])->First();
+        var_dump($project->Posts);
+        die();
+        if($project != null){
+            foreach($project->Posts as $post){
                 if($post->PostStatusId == $publishedStatus->Id){
                     $result->Add($post);
                 }
