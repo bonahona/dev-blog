@@ -2,6 +2,10 @@
     <div class="col-lg-12 blog-entry">
         <h1 class="my-2"><?php echo $Post->Title;?></h1>
 
+        <?php if($this->IsLoggedIn()):?>
+            <a href="/post/edit/<?php echo $Post->Id;?>" class="btn btn-primary btn-md pull-right">Edit</a>
+        <?php endif;?>
+
         <?php if($Post->MastHeadImageUrl != ""):?>
         <div class="row my-2">
             <div class="col-lg-12">
@@ -20,6 +24,10 @@
         </h4>
         <?php if($Post->EditDate != $Post->PublishDate):?>
             <h6 class="light-grey">Edited <?php echo date('Y-m-d', strtotime($Post->EditDate));?></h6>
+        <?php endif;?>
+
+        <?php if($Post->Project != null):?>
+            <h6 class="small"><a href="<?php echo "/search?project=" . $Post->Project->GetLink();?>"><?php echo $Post->Project->Name;?></a></h6>
         <?php endif;?>
 
         <?php if(!$Post->IsPublished):?>

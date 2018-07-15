@@ -3,7 +3,7 @@
 <?php if(count($Posts) == 0):?>
     <h2 class="light-grey">Sorry, no results founds</h2>
 <?php else:?>
-    <h2>Founds <?php echo count($Posts);?> result(s).</h2>
+    <h2>Found <?php echo count($Posts);?> result<?php if(count($Posts) != 1):?>s<?php endif;?>.</h2>
 <?php foreach($Posts as $post):?>
     <div class="row">
         <div class="col-lg-12">

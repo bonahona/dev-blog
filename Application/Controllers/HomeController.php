@@ -129,9 +129,7 @@ class HomeController extends BaseController
             return $this->HttpStatus('500', 'Published status not found');
         }
 
-        $project = $this->Models->Project->Where(['Name' => urldecode($projectName), 'IsActive' => 1, 'IsDeleted' => 1])->First();
-        var_dump($project->Posts);
-        die();
+        $project = $this->Models->Project->Where(['Name' => urldecode($projectName), 'IsActive' => 1, 'IsDeleted' => 0])->First();
         if($project != null){
             foreach($project->Posts as $post){
                 if($post->PostStatusId == $publishedStatus->Id){
