@@ -246,6 +246,16 @@ class ShellAuthHelper implements  IHelper
         $this->Controller->Session->Destroy();
     }
 
+    public function GetUserName($id)
+    {
+        $payload = "query{
+            ShellUser(id: \"$id\"){
+                DisplayName
+            }
+        }";
+
+        return $this->SendToServer($payload)['data']['ShellUser']['DisplayName'];
+    }
     public function GetUser($id)
     {
         $payload = "query{

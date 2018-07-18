@@ -16,7 +16,7 @@ class PostController extends AdminController
     {
         $post = $this->Models->Post->Create([
             'PostStatusId' => 1,
-            'PublishedById' => $this->GetCurrentUser()['LocalUser'],
+            'PublishedById' => $this->GetCurrentUser()['Id'],
             'CreateDate' => date('Y-m-d H:i:s')
         ])->Save();
 

@@ -1,5 +1,6 @@
 <?php
-class UserController extends Controller
+require_once('BaseController.php');
+class UserController extends BaseController
 {
     public function BeforeAction()
     {
@@ -18,7 +19,7 @@ class UserController extends Controller
         ]);
     }
 
-    public function Login($ref = null)
+    public function Login()
     {
         $this->Title = 'Login';
         $this->Layout = 'Login';
@@ -38,6 +39,8 @@ class UserController extends Controller
             if($this->ModelValidation->Valid()) {
 
                 $shellUserId = $response['data']['Login']['ShellUserPrivilege']['ShellUser']['Id'];
+
+                $this->GetRemoteUser($shellUserId);
 
                 if($ref == null || $ref == ""){
                     return $this->Redirect('/');

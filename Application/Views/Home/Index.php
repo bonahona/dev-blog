@@ -30,7 +30,7 @@
 
             <div class="row">
                 <div class="col-lg-12">
-                    <p class="light-grey">Posted on <?php echo date('Y-m-d', strtotime($post->PublishDate));?> by Björn Fyrvall</p>
+                    <p class="light-grey">Posted on <?php echo date('Y-m-d', strtotime($post->PublishDate));?> by <?php echo $post->GetAuthor()->Name;?></p>
                 </div>
             </div>
 

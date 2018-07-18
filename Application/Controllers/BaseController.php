@@ -105,4 +105,17 @@ class BaseController extends Controller
 
         $this->Set('DisplayTags', $result);
     }
+
+    protected function GetRemoteUser($id)
+    {
+        $localUserDetails = $this->Models->LocalUserDetails->Where(['ShellUserId' => $id])->First();
+
+        if($localUserDetails != null){
+            return;
+        }
+
+        $localUserName = $this->Helpers->ShellAuth->GetUserName($id);
+        $localUserDetails = $this->Models->LocalUserDetails->Create(['ShellUserId' => $id, 'Name' => $localUserName, 'Fetched' => date('Y-m-d H:i:s')]);
+        $localUserDetails->Save();
+    }
 }

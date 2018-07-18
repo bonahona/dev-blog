@@ -20,7 +20,7 @@
             <?php else:?>
                 Not yet published <br/>
             <?php endif;?>
-            <span class="small">by Björn Fyrvall</span>
+            <span class="small">by <?php echo $Post->GetAuthor()->Name;?></span>
         </h4>
         <?php if($Post->EditDate != $Post->PublishDate):?>
             <h6 class="light-grey">Edited <?php echo date('Y-m-d', strtotime($Post->EditDate));?></h6>
