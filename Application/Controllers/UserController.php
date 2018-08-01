@@ -58,6 +58,10 @@ class UserController extends BaseController
 
     public function Logout()
     {
+        if(!$this->IsLoggedIn()){
+            return $this->Redirect('/');
+        }
+
         $this->Helpers->ShellAuth->Logout();
         return $this->Redirect('/');
     }

@@ -4,6 +4,13 @@
             <a class="navbar-brand light-grey" href="/">Dev Blog</a>
             <span class="navbar-brand light-grey">|</span>
             <a class="navbar-brand light-grey" href="http://fyrvall.com">Fyrvall.com</a>
+
+            <?php if($this->IsLoggedIn()):?>
+                <div class="navbar-right">
+                    <a href="/logout" class="btn btn-primary btn-md">Logout</a>
+                </div>
+            <?php endif;?>
+
         </div>
 
         <form method="get" action="/search" class="navbar-form navbar-right">

@@ -9,6 +9,14 @@
       }
     },
     {
+      "/logout/{...}": {
+        "Controller": "User",
+        "Action": "Logout",
+        "Variables": {
+        }
+      }
+    },
+    {
       "/search/{...}": {
         "Controller": "Home",
         "Action": "Search",
