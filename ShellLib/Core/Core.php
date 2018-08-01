@@ -88,6 +88,7 @@ class Core
     protected $Models;
     protected $Helpers;
     protected $ModelHelper;
+    protected $FullUrl;
     protected $RequestUrl;
     protected $RequestString;
     protected $Database;
@@ -142,9 +143,14 @@ class Core
         return $this->ModelHelper;
     }
 
-    /* @return int*/
+    /* @return string*/
     public function GetRequestUrl(){
         return $this->RequestUrl;
+    }
+
+    /* @return string*/
+    public function GetFullUrl(){
+        return $this->FullUrl;
     }
 
     public function GetConfigFolder()
@@ -640,6 +646,7 @@ class Core
         $requestRoot = $_SERVER['SCRIPT_NAME'];
         $this->RequestString = $_SERVER['REQUEST_URI'];
         $this->RequestUrl = $this->FixRequestUrl($this->RequestString);
+        $this->FullUrl = $this->CreateFullUrl();
 
         $routingEngine = new Routing($this->RoutesConfig);
         $requestData = $routingEngine->ParseUrl($requestRoot, $this->RequestUrl);
@@ -781,6 +788,11 @@ class Core
         return $requestUrl;
     }
 
+    public function CreateFullUrl()
+    {
+        return $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+    }
+
     public function GetControllerPath($controllerName, $requestData)
     {
         $usedCore = $this;
@@ -879,6 +891,7 @@ class Core
         $controller->Layout         = $this->ApplicationConfig['Application']['DefaultLayout'];
         $controller->Models         = $this->Models;
         $controller->RequestUri     = $this->RequestUrl;
+        $controller->FullUri        = $this->FullUrl;
         $controller->RequestString  = $this->RequestString;
         $controller->Parameters     = $requestData['Variables'];
         $controller->Helpers        = $this->Helpers;

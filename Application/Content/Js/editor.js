@@ -5,14 +5,14 @@ $('document').ready(function(){
 
     var editPostContentTemplate = Handlebars.compile($('#postContentTemplate').html());
 
-    $('#facebookdata .submit').on('click', function(e){
+    $('#opengraphdata .submit').on('click', function(e){
         e.preventDefault();
 
         var button = $(this);
         button.addClass('disabled');
 
         var data = {};
-        $('#facebookdata input').each(function(){
+        $('#opengraphdata input').each(function(){
             data[this.name] = $(this).val();
         });
 

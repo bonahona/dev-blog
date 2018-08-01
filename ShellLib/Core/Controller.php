@@ -16,6 +16,9 @@ class Controller
     public $Verb;
 
     /* @var string */
+    public $FullUri;
+
+    /* @var string */
     public $RequestUri;
 
     /* @var string */

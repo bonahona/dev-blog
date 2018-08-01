@@ -20,7 +20,7 @@
                             <a class="nav-link" id="metadata-tab" data-toggle="tab" href="#metadata" role="tab" aria-controls="metadata" aria-selected="false">Meta data</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" id="facebook-tab" data-toggle="tab" href="#facebook" role="tab" aria-controls="facebook" aria-selected="false">Facebook</a>
+                            <a class="nav-link" id="opengraph-tab" data-toggle="tab" href="#opengraph" role="tab" aria-controls="opengraph" aria-selected="false">OpenGraph</a>
                         </li>
                     </ul>
                     <div class="tab-content" id="post-tab-content">
@@ -30,7 +30,7 @@
                         <div class="tab-pane fade" id="metadata" role="tabpanel" aria-labelledby="metadata-tab">
                             <?php echo $this->PartialView('EditMetaData', ['Post' => $Post, 'PostStatuses' => $PostStatuses, 'ProjectIds' => $ProjectIds, 'UnusedTags' => $UnusedTags, 'Tags' => $Tags]);?>
                         </div>
-                        <div class="tab-pane fade" id="facebook" role="tabpanel" aria-labelledby="facebook-tab">
+                        <div class="tab-pane fade" id="opengraph" role="tabpanel" aria-labelledby="opengraph-tab">
                             <?php echo $this->PartialView('EditFacebook', ['Post' => $Post]);?>
                         </div>
                     </div>

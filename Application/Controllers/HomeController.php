@@ -59,6 +59,8 @@ class HomeController extends BaseController
             }
         }
 
+        $this->SetOpenGraphData($post);
+
         $this->Set('Post', $post);
         return $this->View('Post');
     }
@@ -77,8 +79,17 @@ class HomeController extends BaseController
             $post->IsPublished = false;
         }
 
+        $this->SetOpenGraphData($post);
+
         $this->Set('Post', $post);
         return $this->View('Post');
+    }
+
+    private function SetOpenGraphData($post)
+    {
+        $this->Set('OgTitle', $post->OgTitle);
+        $this->Set('OgDescription', $post->OgDescription);
+        $this->Set('OgImageUrl', $post->MastHeadImageUrl);
     }
 
     public function Search()
