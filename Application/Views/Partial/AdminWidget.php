@@ -10,6 +10,7 @@
                     <li><a href="/post">Manage Posts</a></li>
                     <li><a href="/project">Manage projects</a></li>
                     <li><a href="/tag">Manage tags</a></li>
+                    <li><a href="/users">Manage user data</a></li>
                 </ul>
                 <ul class="list-unstyled mb-0">
                     <li class="mt-2">

@@ -16,14 +16,14 @@
 
         <h4 class="light-grey">
             <?php if($Post->PublishDate != ""):?>
-                Published <?php echo date('Y-m-d', strtotime($Post->PublishDate));?> <br/>
+                Published <?php echo $Post->GetPublishDate();?> <br/>
             <?php else:?>
                 Not yet published <br/>
             <?php endif;?>
             <span class="small">by <?php echo $Post->GetAuthor()->Name;?></span>
         </h4>
         <?php if($Post->EditDate != $Post->PublishDate):?>
-            <h6 class="light-grey">Edited <?php echo date('Y-m-d', strtotime($Post->EditDate));?></h6>
+            <h6 class="light-grey">Edited <?php echo $Post->GetModifiedDate();?></h6>
         <?php endif;?>
 
         <?php if($Post->Project != null):?>

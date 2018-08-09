@@ -12,6 +12,7 @@
     <div class="form-group">
         <label>Masthead Image Url</label>
         <input type="text" name="MastHeadImageUrl" value="<?php echo $Post->MastHeadImageUrl;?>" class="form-control"/>
+        <p class="small">(Make sure width is at least 800px)</p>
     </div>
 
     <div class="row my-2">

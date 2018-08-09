@@ -1,5 +1,18 @@
 <?php
 require_once('BaseController.php');
+class OgData
+{
+    public $OgTitle;
+    public $OgDescription;
+    public $OgImageUrl;
+    public $OgType;
+    public $OgAuthorFirstName;
+    public $OgAuthorLastName;
+    public $OgAuthorId;
+    public $OgArticlePublishDate;
+    public $OgArticleModifiedDate;
+}
+
 class HomeController extends BaseController
 {
     public function Index()
@@ -87,9 +100,25 @@ class HomeController extends BaseController
 
     private function SetOpenGraphData($post)
     {
-        $this->Set('OgTitle', $post->OgTitle);
-        $this->Set('OgDescription', $post->OgDescription);
-        $this->Set('OgImageUrl', $post->MastHeadImageUrl);
+        $ogData = new OgData();
+        $ogData->OgTitle = $post->OgTitle;
+        $ogData->OgDescription = $post->OgDescription;
+
+        if($post->OgImageUrl != null && $post->OgImageUrl != ""){
+            $ogData->OgImageUrl = $post->OgImageUrl;
+        } else {
+            $ogData->OgImageUrl = $post->MastHeadImageUrl;
+        }
+
+        $ogData->OgType = 'article';
+        $ogData->OgAuthorFirstName = $post->GetAuthor()->FirstName;
+        $ogData->OgAuthorLastName = $post->GetAuthor()->LastName;
+        $ogData->OgAuthorId = $post->GetAuthor()->FacebookId;
+
+        $ogData->OgArticlePublishDate = $post->GetPublishDateIso();
+        $ogData->OgArticleModifiedDate = $post->GetModifiedDateIso();
+
+        $this->Set('OgData', $ogData);
     }
 
     public function Search()

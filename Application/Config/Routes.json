@@ -48,6 +48,13 @@
       }
     },
     {
+      "/users/{Action}/{...}": {
+        "Controller": "UserDetails",
+        "Action": "{Action}",
+        "Variables": "{...}"
+      }
+    },
+    {
       "/post/{Action}/{...}": {
         "Controller": "Post",
         "Action": "{Action}",

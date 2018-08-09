@@ -1,5 +1,5 @@
 <?php
-class LocalUserDetails implements IDatabaseMigration
+class LocalUserDetailsMigration implements IDatabaseMigration
 {
     public function GetUniqueName()
     {

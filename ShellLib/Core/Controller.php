@@ -85,6 +85,9 @@ class Controller
     public $Title;
     public $Layout;
 
+    // Cache data
+    public $DontCache = false;          // If set, even if whole page caching is turned on, this page wont be cached
+
     // Data that will/can be used in the view
     public $ViewData = array();
 
