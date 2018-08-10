@@ -4227,7 +4227,7 @@ var Editor = /** @class */ (function () {
                 if (typeof param === 'string') {
                     $image.attr('data-filename', param);
                 }
-                $image.css('width', Math.min(_this.$editable.width(), $image.width()));
+                //$image.css('width', Math.min(_this.$editable.width(), $image.width()));
             }
             $image.show();
             range.create(_this.editable).insertNode($image[0]);
@@ -6083,12 +6083,14 @@ var ImageDialog = /** @class */ (function () {
             imageLimitation = "<small>" + (this.lang.image.maximumFileSize + ' : ' + readableSize) + "</small>";
         }
         var body = [
+            /*
             '<div class="form-group note-form-group note-group-select-from-files">',
             '<label class="note-form-label">' + this.lang.image.selectFromFiles + '</label>',
             '<input class="note-image-input note-form-control note-input" ',
             ' type="file" name="files" accept="image/*" multiple="multiple" />',
             imageLimitation,
             '</div>',
+            */
             '<div class="form-group note-group-image-url" style="overflow:auto;">',
             '<label class="note-form-label">' + this.lang.image.url + '</label>',
             '<input class="note-image-url form-control note-form-control note-input ',
@@ -6356,7 +6358,7 @@ var VideoDialog = /** @class */ (function () {
             $video = $$1('<iframe>')
                 .attr('frameborder', 0)
                 .attr('src', '//www.youtube.com/embed/' + youtubeId)
-                .attr('width', '640').attr('height', '360');
+                .attr('width', '800').attr('height', '450');
         }
         else if (igMatch && igMatch[0].length) {
             $video = $$1('<iframe>')
