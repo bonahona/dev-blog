@@ -34,7 +34,7 @@
                 </div>
             </div>
 
-            <div class="row">
+            <div class="row my-4">
                 <div class="col-lg-12">
                     <?php foreach($post->PostTags as $postTag):?>
                         <span class="label label-info"><?php echo $postTag->Tag->DisplayName;?></span>
