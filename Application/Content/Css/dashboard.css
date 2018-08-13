@@ -304,6 +304,10 @@ hr {
     box-shadow: 2px 2px #0003;
 }
 
+mw-100{
+    max-width: 100%;
+}
+
 blockquote small{
     margin-left: 2em;
     font-style: italic;
@@ -312,4 +316,9 @@ blockquote small{
 
 blockquote small::before{
     content: '- ';
+}
+
+pre {
+    font-size: 0.8em;
+    line-height: 1.2;
 }

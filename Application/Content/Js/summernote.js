@@ -4227,7 +4227,7 @@ var Editor = /** @class */ (function () {
                 if (typeof param === 'string') {
                     $image.attr('data-filename', param);
                 }
-                $image.attr('class', 'col-lg-12');
+                $image.attr('class', 'col-lg-12 mw-100');
             }
             $image.show();
             range.create(_this.editable).insertNode($image[0]);
