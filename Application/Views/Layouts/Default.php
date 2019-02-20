@@ -14,6 +14,7 @@
     <?php foreach($this->CssFiles as $cssFile):?>
         <?php echo $this->Html->Css($cssFile);?>
     <?php endforeach;?>
+    <?php echo $this->Html->Css('sh_style.css');?>
 
     <?php echo $this->PartialView('OgHeader', ['OgData' => $OgData]);?>
 
@@ -49,6 +50,8 @@
         </div>
     </div>
 
+    <?php echo $this->Html->Js('sh_main.min.js');?>
+    <?php echo $this->Html->Js('sh_main.csharp.js');?>
     <?php foreach($this->JavascriptFiles as $javascriptFile):?>
         <?php echo $this->Html->Js($javascriptFile);?>
     <?php endforeach;?>

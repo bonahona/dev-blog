@@ -1765,7 +1765,8 @@ $$1.extend($$1.summernote.lang, {
             p: 'Normal',
             blockquote: 'Quote',
             small: 'Small',
-            pre: 'Code',
+            pre: 'Pre',
+            code: 'Code',
             h1: 'Header 1',
             h2: 'Header 2',
             h3: 'Header 3',
@@ -7129,9 +7130,9 @@ $$1.summernote = $$1.extend($$1.summernote, {
         tooltip: 'auto',
         container: 'body',
         maxTextLength: 0,
-        styleTags: ['p', 'blockquote', 'small', 'pre', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6'],
+        styleTags: ['p', 'blockquote', 'small', 'pre', 'code', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6'],
         fontNames: [
-            'Arial', 'Arial Black', 'Comic Sans MS', 'Courier New',
+            'Arial', 'Arial Black', 'Courier New',
             'Helvetica Neue', 'Helvetica', 'Impact', 'Lucida Grande',
             'Tahoma', 'Times New Roman', 'Verdana'
         ],

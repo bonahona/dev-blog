@@ -145,14 +145,18 @@ class DatabaseMigrator
     public function RunTasks()
     {
         foreach($this->QueuedTasks as $task){
-            echo "\n" . $task->Description() . "... \n";
-            $result = $task->Execute($this);
+            try {
+                echo "\n" . $task->Description() . "... \n";
+                $result = $task->Execute($this);
 
-            if($result === true){
-                echo "done!\n";
-            }else{
-                echo "failed!\n";
-                echo $result . "\n";
+                if ($result === true) {
+                    echo "done!\n";
+                } else {
+                    echo "failed!\n";
+                    echo $result . "\n";
+                }
+            }catch (Exception $e){
+                echo "failed with exception " . $e->getMessage();
             }
         }
     }

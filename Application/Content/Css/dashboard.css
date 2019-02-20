@@ -321,4 +321,9 @@ blockquote small::before{
 pre {
     font-size: 0.8em;
     line-height: 1.2;
+    max-height: 10em;
+}
+
+pre.unlimited {
+    max-height: 1000em;
 }
