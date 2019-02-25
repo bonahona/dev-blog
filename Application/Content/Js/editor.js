@@ -74,7 +74,6 @@ $('document').ready(function(){
         ).done(function(data){
             var newContent = $('#content-wrapper').append(editPostContentTemplate(data));
             newContent.find('.editContent').on('click', editContent);
-            newContent.find('.stopContent').on('click', stopContent);
             newContent.find('.saveContent').on('click', saveContent);
             newContent.find('.deleteContent').on('click', deleteContent);
 
@@ -85,7 +84,27 @@ $('document').ready(function(){
     function editContent(e){
         e.preventDefault();
 
-        $(this).closest('.postSection').find('.editableContent').summernote();
+        var container = $(this).closest('.postSection').find('.editableContent').get(0);
+        var toolbarOptions = [
+            [{ 'header': [1, 2, 3, false] }],
+            [{'code': [
+                {'cs': function(value){alert(value)}},
+                {"js": function(value){alert(value)}},
+                {'cpp': function(value){alert(value)}}
+            ]}],
+            ['bold', 'italic', 'underline', 'strike'],
+            ['blockquote'],
+            [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+            [{ 'color': [] }, { 'background': [] }],
+            ['clean']
+        ];
+
+        var editor = new Quill(container, {
+            modules: {
+                toolbar: toolbarOptions
+            },
+            theme:  'snow'
+        });
     }
 
     function stopContent(e){
@@ -144,7 +163,6 @@ $('document').ready(function(){
     }
 
     $('.editContent').on('click', editContent);
-    $('.stopContent').on('click', stopContent);
     $('.saveContent').on('click', saveContent);
     $('.deleteContent').on('click', deleteContent);
 });

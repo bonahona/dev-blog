@@ -327,3 +327,25 @@ pre {
 pre.unlimited {
     max-height: 1000em;
 }
+
+
+.ql-toolbar.ql-snow{
+    background-color: #ccc;
+}
+
+.ql-snow .ql-picker.ql-code .ql-picker-label::before, .ql-snow .ql-picker.ql-code .ql-picker-item::before {
+    content: 'Code';
+    width: 4em;
+}
+
+.ql-snow .ql-picker.ql-code .ql-picker-item[data-value="cs"]::before {
+    content: 'C#';
+}
+
+.ql-snow .ql-picker.ql-code .ql-picker-item[data-value="js"]::before {
+    content: 'Javascript';
+}
+
+.ql-snow .ql-picker.ql-code .ql-picker-item[data-value="cpp"]::before {
+    content: 'C++';
+}

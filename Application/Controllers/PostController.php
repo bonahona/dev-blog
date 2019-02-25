@@ -16,7 +16,7 @@ class PostController extends AdminController
     {
         $post = $this->Models->Post->Create([
             'PostStatusId' => 1,
-            'PublishedById' => $this->GetCurrentUser()['Id'],
+            'PublishedById' => $this->GetCurrentUser()['LocalUser'],
             'CreateDate' => date('Y-m-d H:i:s')
         ])->Save();
 
@@ -34,9 +34,14 @@ class PostController extends AdminController
             return $this->HttpNotFound();
         }
 
-        $this->EnqueueCssFiles(['summernote.css']);
+        $this->EnqueueCssFiles([
+            'summernote.css',
+            'quill.core.css',
+            'quill.snow.css'
+        ]);
         $this->EnqueueJavascript([
             'summernote.js',
+            'quill.min.js',
             'handlebars-v4.0.11.js',
             'editor.js'
         ]);
